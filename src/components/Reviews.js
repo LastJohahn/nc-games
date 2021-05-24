@@ -1,15 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getReviews } from "../utils/api.js";
 
 const Reviews = () => {
+  const [reviews, setReviews] = useState();
+
+  useEffect(() => {
+    getReviews().then((result) => {
+      setReviews(result.reviews);
+    });
+  }, []);
+
   return (
-    <body class="reviews">
+    <div class="reviews">
       <h2>test</h2>
       <ul>
         <li>review one</li>
         <li>review two</li>
         <li>review three</li>
       </ul>
-    </body>
+    </div>
   );
 };
 
