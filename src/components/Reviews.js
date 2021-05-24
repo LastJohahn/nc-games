@@ -11,7 +11,7 @@ const Reviews = () => {
   }, []);
 
   return (
-    <div class="reviews">
+    <div className="reviews">
       <h2>test</h2>
       <ul>
         <li>review one</li>

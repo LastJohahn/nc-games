@@ -1,3 +1,15 @@
 .App {
   text-align: center;
 }
+
+.main_header {
+  background-color: grey;
+}
+
+.nav {
+  background-color: lightgray;
+}
+
+.reviews {
+  background-color: gainsboro;
+}
