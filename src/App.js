@@ -7,13 +7,13 @@ import Reviews from "./components/Reviews";
 function App() {
   return (
     <div className="App">
-      {/* <Switch> */}
       <Header />
       <Nav />
-      {/* <Route exact path="/"> */}
-      <Reviews />
-      {/* </Route>
-      </Switch> */}
+      <Switch>
+        <Route exact path="/">
+          <Reviews />
+        </Route>
+      </Switch>
     </div>
   );
 }
