@@ -18,3 +18,7 @@
   background-color: grey;
   border-bottom: black solid 2px;
 }
+
+.reviews__sortButton--state-active {
+  background-color: rgb(185, 182, 182);
+}
