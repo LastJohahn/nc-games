@@ -10,7 +10,11 @@ export const getReviews = async (sortBy) => {
     return data;
   } else {
     const { data } = await gamesApi.get(`/reviews?sort_by=${sortBy}`);
-    console.log(sortBy);
     return data;
   }
+};
+
+export const getCommentCountByReviewId = async (reviewId) => {
+  const { data } = await gamesApi.get(`/reviews/${reviewId}`);
+  return data;
 };

@@ -1,17 +1,32 @@
 import React, { useEffect, useState } from "react";
-import { getReviews } from "../utils/api.js";
+import { getCommentCountByReviewId, getReviews } from "../utils/api.js";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const [sortBy, setSortBy] = useState("");
+  const [commentCount, setCommentCount] = useState([]);
 
   useEffect(() => {
-    getReviews(sortBy).then((result) => {
-      const reviewsToUse = result.reviews;
-      setReviews(reviewsToUse);
-      // console.log("reviewsToUse", reviewsToUse);
-      // console.log("reviews", reviews);
-    });
+    getReviews(sortBy)
+      .then((result) => {
+        const reviewsToUse = result.reviews;
+        setReviews(reviewsToUse);
+        const commentsByIdPending = reviewsToUse.map(({ review_id }) => {
+          return getCommentCountByReviewId(review_id).then((result) => {
+            let obj = {};
+            obj[review_id] = result.review[0].comment_count;
+            return obj;
+          });
+        });
+        return Promise.all(commentsByIdPending);
+      })
+      .then((commentsById) => {
+        setCommentCount((currCommentCount) => {
+          let newCommentCount = [...currCommentCount];
+          newCommentCount = [...commentsById];
+          return newCommentCount;
+        });
+      });
   }, [sortBy]);
 
   return (
@@ -54,6 +69,14 @@ const Reviews = () => {
           return (
             <li key={review.review_id}>
               <h2 className="reviews reviews__header">{review.title}</h2>
+              <p>
+                {commentCount.map((commentCountObj) => {
+                  if (review.review_id in commentCountObj) {
+                    return `comments: ${commentCountObj[review.review_id]}`;
+                  }
+                })}
+              </p>
+              <p> {`votes: ${review.votes}`}</p>
               <p>{review.review_body}</p>
             </li>
           );
