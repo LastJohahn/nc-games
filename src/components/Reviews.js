@@ -1,46 +1,32 @@
 import React, { useEffect, useState } from "react";
-import { getCommentCountByReviewId, getReviews } from "../utils/api.js";
-import { commentAttacher } from "../utils/comments.js";
+import { getReviews } from "../utils/api.js";
+import { commentsSortBy } from "../utils/comments.js";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const [sortBy, setSortBy] = useState("");
-  const [commentCount, setCommentCount] = useState([]);
   const [sortByComments, setSortByComments] = useState(false);
 
   useEffect(() => {
-    getReviews(sortBy)
-      .then((result) => {
-        const reviewsToUse = result.reviews;
+    getReviews(sortBy).then((result) => {
+      const reviewsToUse = result.reviews;
+      if (sortByComments === false) {
         setReviews(reviewsToUse);
-        const commentsByIdPending = reviewsToUse.map(({ review_id }) => {
-          return getCommentCountByReviewId(review_id).then((result) => {
-            let obj = {};
-            obj[review_id] = result.review[0].comment_count;
-            return obj;
-          });
-        });
-        return Promise.all(commentsByIdPending);
-      })
-      .then((commentsById) => {
-        setCommentCount((currCommentCount) => {
-          let newCommentCount = [...currCommentCount];
-          newCommentCount = [...commentsById];
-          return newCommentCount;
-        });
-      });
-  }, [sortBy]);
-
-  commentAttacher(reviews, commentCount);
+      } else if (sortByComments === true) {
+        commentsSortBy(reviewsToUse);
+        setReviews(reviewsToUse);
+      }
+    });
+  }, [sortBy, sortByComments]);
 
   return (
     <div className="reviews">
       <h2>REVIEWS</h2>
       <button
         className={
-          sortBy
-            ? "reviews reviews__sortButton"
-            : "reviews reviews__sortButton--state-active"
+          sortBy === "" && sortByComments === false
+            ? "reviews reviews__sortButton--state-active"
+            : "reviews reviews__sortButton"
         }
         onClick={() => {
           setSortByComments(false);
@@ -51,7 +37,7 @@ const Reviews = () => {
       </button>
       <button
         className={
-          sortBy === "votes"
+          sortBy === "votes" && sortByComments === false
             ? "reviews reviews__sortButton--state-active"
             : "reviews reviews__sortButton"
         }
@@ -63,10 +49,13 @@ const Reviews = () => {
         votes
       </button>
       <button
-        className="reviews reviews__sortButton"
+        className={
+          sortByComments === false
+            ? "reviews reviews__sortButton"
+            : "reviews reviews__sortButton--state-active"
+        }
         onClick={() => {
           setSortByComments(true);
-          console.log(sortByComments);
         }}
       >
         comment_count
