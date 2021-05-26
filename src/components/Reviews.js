@@ -76,13 +76,7 @@ const Reviews = () => {
           return (
             <li key={review.review_id}>
               <h2 className="reviews reviews__header">{review.title}</h2>
-              <p>
-                {commentCount.map((commentCountObj) => {
-                  if (review.review_id in commentCountObj) {
-                    return `comments: ${commentCountObj[review.review_id]}`;
-                  }
-                })}
-              </p>
+              <p>{`comments: ${review.comment_count}`}</p>
               <p> {`votes: ${review.votes}`}</p>
               <p>{review.review_body}</p>
             </li>
