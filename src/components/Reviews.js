@@ -69,7 +69,8 @@ const Reviews = () => {
                 <h2 className="reviews reviews__header">{review.title}</h2>
               </Link>
               <p>{`comments: ${review.comment_count}`}</p>
-              <p> {`votes: ${review.votes}`}</p>
+              <p>{`votes: ${review.votes}`}</p>
+              <p>{`posted by: ${review.owner}`}</p>
               <p>{review.review_body}</p>
             </li>
           );
