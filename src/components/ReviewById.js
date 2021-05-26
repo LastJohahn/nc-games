@@ -15,7 +15,11 @@ const ReviewById = () => {
 
   useEffect(() => {
     getCommentsById(review_id).then((result) => {
-      setCommentsOnReview(result.comments);
+      if (result.comments) {
+        setCommentsOnReview(result.comments);
+      } else {
+        setCommentsOnReview(result);
+      }
     });
   }, [review_id]);
 
