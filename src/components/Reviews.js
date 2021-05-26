@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { getReviews } from "../utils/api.js";
 import { commentsSortBy } from "../utils/comments.js";
 
@@ -64,7 +65,9 @@ const Reviews = () => {
         {reviews.map((review) => {
           return (
             <li key={review.review_id}>
-              <h2 className="reviews reviews__header">{review.title}</h2>
+              <Link to={`/reviews/${review.review_id}`}>
+                <h2 className="reviews reviews__header">{review.title}</h2>
+              </Link>
               <p>{`comments: ${review.comment_count}`}</p>
               <p> {`votes: ${review.votes}`}</p>
               <p>{review.review_body}</p>

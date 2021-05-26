@@ -2,6 +2,7 @@ import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Header-homepage";
 import Nav from "./components/Nav";
+import ReviewById from "./components/ReviewById";
 import Reviews from "./components/Reviews";
 
 function App() {
@@ -12,6 +13,9 @@ function App() {
       <Switch>
         <Route exact path="/">
           <Reviews />
+        </Route>
+        <Route exact path="/reviews/:review_id">
+          <ReviewById />
         </Route>
       </Switch>
     </div>
