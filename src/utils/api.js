@@ -18,3 +18,18 @@ export const getReviewById = async (review_id) => {
   const { data } = await gamesApi.get(`/reviews/${review_id}`);
   return data;
 };
+
+export const getCommentsById = async (review_id) => {
+  try {
+    const { data } = await gamesApi.get(`/reviews/${review_id}/comments`);
+
+    return data;
+  } catch (err) {
+    if (err.status === 404) {
+      return [];
+    } else {
+      console.log(err);
+      return [];
+    }
+  }
+};

@@ -66,7 +66,7 @@ const Reviews = () => {
           return (
             <li key={review.review_id}>
               <Link to={`/reviews/${review.review_id}`}>
-                <h2 className="reviews reviews__header">{review.title}</h2>
+                <h2 className="reviews reviews__title">{review.title}</h2>
               </Link>
               <p>{`comments: ${review.comment_count}`}</p>
               <p>{`votes: ${review.votes}`}</p>
