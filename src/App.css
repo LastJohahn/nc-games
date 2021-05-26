@@ -10,6 +10,16 @@
   background-color: lightgray;
 }
 
+img {
+  display: block;
+  max-width: 230px;
+  max-height: 95px;
+  width: auto;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .reviews {
   background-color: gainsboro;
   list-style-type: none;

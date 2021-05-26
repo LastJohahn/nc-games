@@ -31,7 +31,10 @@ const ReviewById = () => {
         <p>{`comments: ${review.comment_count}`}</p>
         <p>{`votes: ${review.votes}`}</p>
         <p>{`posted by: ${review.owner}`}</p>
-        {/* <img src={`${review.review_img_url}`} /> */}
+        <img
+          src={`${review.review_img_url}`}
+          alt="image reviewer has chosen to represent the game"
+        />
         <p>{review.review_body}</p>
       </section>
       <section className="comments">
