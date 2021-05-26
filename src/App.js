@@ -4,6 +4,7 @@ import Header from "./components/Header-homepage";
 import Nav from "./components/Nav";
 import ReviewById from "./components/ReviewById";
 import Reviews from "./components/Reviews";
+import ReviewsByCategory from "./components/ReviewsByCategory";
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
         </Route>
         <Route exact path="/reviews/:review_id">
           <ReviewById />
+        </Route>
+        <Route exact path="/:category">
+          <ReviewsByCategory />
         </Route>
       </Switch>
     </div>
