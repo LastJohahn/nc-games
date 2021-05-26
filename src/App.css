@@ -28,3 +28,26 @@
 .reviews__sortButton--state-active {
   background-color: rgb(185, 182, 182);
 }
+
+.review {
+  background-color: gainsboro;
+}
+
+.review__title {
+  background-color: grey;
+  border-bottom: black solid 2px;
+}
+
+.comments {
+  background-color: gainsboro;
+}
+.comments__list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.comments__list__poster {
+  background-color: grey;
+  border-bottom: black solid 2px;
+}

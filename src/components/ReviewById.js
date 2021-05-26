@@ -26,7 +26,8 @@ const ReviewById = () => {
   return (
     <div>
       <section className="review">
-        <h1 className="review review__title">{review.title}</h1>
+        <h1>REVIEW</h1>
+        <h2 className="review review__title">{review.title}</h2>
         <p>{`comments: ${review.comment_count}`}</p>
         <p>{`votes: ${review.votes}`}</p>
         <p>{`posted by: ${review.owner}`}</p>
@@ -39,8 +40,8 @@ const ReviewById = () => {
           {commentsOnReview.map((comment) => {
             return (
               <li key={comment.comment_id}>
+                <h3 className="comments comments__list comments__list__poster">{`posted by: ${comment.author}`}</h3>
                 <p>{comment.body}</p>
-                <p>{`posted by: ${comment.author}`}</p>
               </li>
             );
           })}
