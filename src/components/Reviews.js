@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { getCommentCountByReviewId, getReviews } from "../utils/api.js";
+import { commentAttacher } from "../utils/comments.js";
 
 const Reviews = () => {
   const [reviews, setReviews] = useState([]);
   const [sortBy, setSortBy] = useState("");
   const [commentCount, setCommentCount] = useState([]);
+  const [sortByComments, setSortByComments] = useState(false);
 
   useEffect(() => {
     getReviews(sortBy)
@@ -29,6 +31,8 @@ const Reviews = () => {
       });
   }, [sortBy]);
 
+  commentAttacher(reviews, commentCount);
+
   return (
     <div className="reviews">
       <h2>REVIEWS</h2>
@@ -39,6 +43,7 @@ const Reviews = () => {
             : "reviews reviews__sortButton--state-active"
         }
         onClick={() => {
+          setSortByComments(false);
           setSortBy("");
         }}
       >
@@ -51,19 +56,21 @@ const Reviews = () => {
             : "reviews reviews__sortButton"
         }
         onClick={() => {
+          setSortByComments(false);
           setSortBy("votes");
         }}
       >
         votes
       </button>
-      {/* <button
+      <button
         className="reviews reviews__sortButton"
         onClick={() => {
-          setSortBy("comment_count");
+          setSortByComments(true);
+          console.log(sortByComments);
         }}
       >
         comment_count
-      </button> */}
+      </button>
       <ul className="reviews reviews__list">
         {reviews.map((review) => {
           return (
