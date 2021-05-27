@@ -1,9 +1,29 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { getCategories, getReviews } from "../utils/api";
 
 const ReviewsByCategory = ({ reviews, setReviews }) => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    getReviews("").then((result) => {
+      const reviewsToUse = result.reviews;
+      setReviews(reviewsToUse);
+    });
+  }, []);
+
+  useEffect(() => {
+    getCategories().then((result) => {
+      const categoriesToUse = result.categories;
+      setCategories(categoriesToUse);
+    });
+  }, []);
+
+  console.log(categories);
+
   return (
-    <div>
+    <div classname="reviewsByCategory">
       <h1>CATEGOREH</h1>
+      <ul className="reviewsByCategory reviewsByCategory__list"></ul>
     </div>
   );
 };
