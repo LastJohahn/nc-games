@@ -15,6 +15,7 @@ function App() {
   useEffect(() => {
     getCategories().then((result) => {
       const categoriesToUse = result.categories;
+      // console.log(categoriesToUse);
       setCategories(categoriesToUse);
     });
   }, []);

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getReviews } from "../utils/api.js";
 import { commentsSortBy } from "../utils/comments.js";
+import Votes from "./Votes.js";
 
 const Reviews = ({ reviews, setReviews }) => {
   const [sortBy, setSortBy] = useState("");
@@ -68,7 +69,7 @@ const Reviews = ({ reviews, setReviews }) => {
                 <h2 className="reviews reviews__title">{review.title}</h2>
               </Link>
               <p>{`comments: ${review.comment_count}`}</p>
-              <p>{`votes: ${review.votes}`}</p>
+              <Votes review={review} />
               <p>{`posted by: ${review.owner}`}</p>
               <img
                 src={review.review_img_url}

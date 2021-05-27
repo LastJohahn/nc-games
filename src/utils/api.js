@@ -6,11 +6,21 @@ const gamesApi = axios.create({
 
 export const getReviews = async (sortBy) => {
   if (sortBy === "") {
-    const { data } = await gamesApi.get("/reviews");
-    return data;
+    try {
+      const { data } = await gamesApi.get("/reviews");
+      return data;
+    } catch (err) {
+      console.log(err, "getReviews no sort");
+      return [];
+    }
   } else {
-    const { data } = await gamesApi.get(`/reviews?sort_by=${sortBy}`);
-    return data;
+    try {
+      const { data } = await gamesApi.get(`/reviews?sort_by=${sortBy}`);
+      return data;
+    } catch (err) {
+      console.log(err, "getReviews sort");
+      return [];
+    }
   }
 };
 
@@ -22,7 +32,6 @@ export const getReviewById = async (review_id) => {
 export const getCommentsById = async (review_id) => {
   try {
     const { data } = await gamesApi.get(`/reviews/${review_id}/comments`);
-
     return data;
   } catch (err) {
     if (err.status === 404) {
@@ -40,13 +49,8 @@ export const getCategories = async () => {
 };
 
 export const voteAdder = async (review_id) => {
-  try {
-    const { data } = await gamesApi.patch(`/reviews/${review_id}`, {
-      inc_votes: 1,
-    });
-    return data;
-  } catch (err) {
-    console.log(err);
-    return err;
-  }
+  const { data } = await gamesApi.patch(`/reviews/${review_id}`, {
+    inc_votes: 1,
+  });
+  return data;
 };
