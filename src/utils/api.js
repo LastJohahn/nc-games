@@ -33,3 +33,8 @@ export const getCommentsById = async (review_id) => {
     }
   }
 };
+
+export const getCategories = async () => {
+  const { data } = await gamesApi.get("/categories");
+  return data;
+};
