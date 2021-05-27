@@ -2,22 +2,22 @@ import React, { useState } from "react";
 import { voteAdder } from "../utils/api";
 
 const Votes = ({ review }) => {
-  const [reviewVotes, setReviewVotes] = useState(review.votes);
+  const [reviewVotes, setReviewVotes] = useState(0);
   const [voteError, setVoteError] = useState(false);
+
+  const isDisabled = reviewVotes > 0;
 
   return (
     <div className="votes">
-      <p>{`votes: ${reviewVotes}`}</p>
+      <p>{`votes: ${review.votes + reviewVotes}`}</p>
       <button
         className="votes votes__button"
+        disabled={isDisabled}
         onClick={() => {
           voteAdder(review.review_id)
             .then(() => {
               setVoteError(false);
-              setReviewVotes((currVotes) => {
-                let newVotes = currVotes + 1;
-                return newVotes;
-              });
+              setReviewVotes(1);
             })
             .catch((err) => {
               setVoteError(true);

@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 import { getReviews } from "../utils/api";
+import Votes from "./Votes.js";
 
-const ReviewsByCategory = ({ reviews, setReviews, categories }) => {
+const ReviewsByCategory = ({ reviews, setReviews }) => {
   const { category } = useParams();
 
   useEffect(() => {
@@ -14,7 +15,7 @@ const ReviewsByCategory = ({ reviews, setReviews, categories }) => {
   }, []);
 
   return (
-    <div classname="reviewsByCategory">
+    <div className="reviewsByCategory">
       <h1>{category.replace("-", " ").toUpperCase()}</h1>
       <ul className="reviewsByCategory reviewsByCategory__list">
         {reviews.map((review) => {
@@ -25,7 +26,7 @@ const ReviewsByCategory = ({ reviews, setReviews, categories }) => {
                   <h2 className="reviews reviews__title">{review.title}</h2>
                 </Link>
                 <p>{`comments: ${review.comment_count}`}</p>
-                <p>{`votes: ${review.votes}`}</p>
+                <Votes review={review} />
                 <p>{`posted by: ${review.owner}`}</p>
                 <img
                   src={review.review_img_url}

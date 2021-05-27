@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getCommentsById, getReviewById } from "../utils/api";
+import Votes from "./Votes.js";
 
 const ReviewById = () => {
-  const [review, setReview] = useState([]);
+  const [review, setReview] = useState({});
   const [commentsOnReview, setCommentsOnReview] = useState([]);
   const { review_id } = useParams();
 
@@ -29,7 +30,7 @@ const ReviewById = () => {
         <h1>REVIEW</h1>
         <h2 className="review review__title">{review.title}</h2>
         <p>{`comments: ${review.comment_count}`}</p>
-        <p>{`votes: ${review.votes}`}</p>
+        <Votes review={review} />
         <p>{`posted by: ${review.owner}`}</p>
         <img
           src={`${review.review_img_url}`}
