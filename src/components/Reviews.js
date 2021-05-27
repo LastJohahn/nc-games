@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import { getReviews } from "../utils/api.js";
 import { commentsSortBy } from "../utils/comments.js";
 
-const Reviews = () => {
-  const [reviews, setReviews] = useState([]);
+const Reviews = ({ reviews, setReviews }) => {
   const [sortBy, setSortBy] = useState("");
   const [sortByComments, setSortByComments] = useState(false);
 

@@ -1,6 +1,6 @@
 import React from "react";
 
-const ReviewsByCategory = () => {
+const ReviewsByCategory = ({ reviews, setReviews }) => {
   return (
     <div>
       <h1>CATEGOREH</h1>
@@ -9,3 +9,6 @@ const ReviewsByCategory = () => {
 };
 
 export default ReviewsByCategory;
+
+// state category
+// prop drill reviews
