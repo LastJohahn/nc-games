@@ -15,7 +15,7 @@ const ReviewsByCategory = ({ reviews, setReviews, categories }) => {
 
   return (
     <div classname="reviewsByCategory">
-      <h1>{category.toUpperCase()}</h1>
+      <h1>{category.replace("-", " ").toUpperCase()}</h1>
       <ul className="reviewsByCategory reviewsByCategory__list">
         {reviews.map((review) => {
           if (review.category === category) {
