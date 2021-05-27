@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { getCategories, getReviews } from "../utils/api";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router";
+import { getReviews } from "../utils/api";
 
-const ReviewsByCategory = ({ reviews, setReviews }) => {
-  const [categories, setCategories] = useState([]);
+const ReviewsByCategory = ({ reviews, setReviews, categories }) => {
+  const { category } = useParams();
 
   useEffect(() => {
     getReviews("").then((result) => {
@@ -11,24 +13,32 @@ const ReviewsByCategory = ({ reviews, setReviews }) => {
     });
   }, []);
 
-  useEffect(() => {
-    getCategories().then((result) => {
-      const categoriesToUse = result.categories;
-      setCategories(categoriesToUse);
-    });
-  }, []);
-
-  console.log(categories);
-
   return (
     <div classname="reviewsByCategory">
-      <h1>CATEGOREH</h1>
-      <ul className="reviewsByCategory reviewsByCategory__list"></ul>
+      <h1>{category.toUpperCase()}</h1>
+      <ul className="reviewsByCategory reviewsByCategory__list">
+        {reviews.map((review) => {
+          if (review.category === category) {
+            return (
+              <li key={review.review_id}>
+                <Link to={`/reviews/${review.review_id}`}>
+                  <h2 className="reviews reviews__title">{review.title}</h2>
+                </Link>
+                <p>{`comments: ${review.comment_count}`}</p>
+                <p>{`votes: ${review.votes}`}</p>
+                <p>{`posted by: ${review.owner}`}</p>
+                <img
+                  src={review.review_img_url}
+                  alt="image reviewer has chosen to represent the game"
+                ></img>
+                <p>{review.review_body}</p>
+              </li>
+            );
+          }
+        })}
+      </ul>
     </div>
   );
 };
 
 export default ReviewsByCategory;
-
-// state category
-// prop drill reviews
