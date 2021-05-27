@@ -38,3 +38,15 @@ export const getCategories = async () => {
   const { data } = await gamesApi.get("/categories");
   return data;
 };
+
+export const voteAdder = async (review_id) => {
+  try {
+    const { data } = await gamesApi.patch(`/reviews/${review_id}`, {
+      inc_votes: 1,
+    });
+    return data;
+  } catch (err) {
+    console.log(err);
+    return err;
+  }
+};
