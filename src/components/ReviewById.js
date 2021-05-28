@@ -37,8 +37,6 @@ const ReviewById = () => {
     }
   }, []);
 
-  // console.log(Object.keys(user).length);
-
   return (
     <div>
       <section className="review">
@@ -54,7 +52,14 @@ const ReviewById = () => {
         <p>{review.review_body}</p>
       </section>
       <section>
-        {isUser ? <CommentForm /> : <p>Please log in to leave a comment!</p>}
+        {isUser ? (
+          <CommentForm
+            review_id={review_id}
+            setCommentsOnReview={setCommentsOnReview}
+          />
+        ) : (
+          <p>Please log in to leave a comment!</p>
+        )}
       </section>
       <section className="comments">
         <h1>COMMENTS</h1>
