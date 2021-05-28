@@ -14,10 +14,10 @@ const Votes = ({ review }) => {
         className="votes votes__button"
         disabled={isDisabled}
         onClick={() => {
+          setReviewVotes(1);
           voteAdder(review.review_id)
             .then(() => {
               setVoteError(false);
-              setReviewVotes(1);
             })
             .catch((err) => {
               setVoteError(true);
