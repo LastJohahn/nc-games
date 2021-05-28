@@ -54,3 +54,5 @@ export const voteAdder = async (review_id) => {
   });
   return data;
 };
+
+export const postComment = async (username, body) => {};
