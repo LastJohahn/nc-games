@@ -60,5 +60,5 @@ export const postComment = async (review_id, usernamePassed, bodyPassed) => {
     username: usernamePassed,
     body: bodyPassed,
   });
-  return response;
+  return response.data.comment;
 };
