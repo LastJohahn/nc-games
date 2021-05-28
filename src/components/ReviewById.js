@@ -1,11 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { getCommentsById, getReviewById } from "../utils/api";
+import { UserContext } from "../contexts/User";
+import CommentForm from "./CommentForm.js";
 import Votes from "./Votes.js";
 
 const ReviewById = () => {
   const [review, setReview] = useState({});
   const [commentsOnReview, setCommentsOnReview] = useState([]);
+  const [isUser, setIsUser] = useState();
+  const { user } = useContext(UserContext);
+
   const { review_id } = useParams();
 
   useEffect(() => {
@@ -24,6 +29,16 @@ const ReviewById = () => {
     });
   }, [review_id]);
 
+  useEffect(() => {
+    if (Object.keys(user).length > 0) {
+      setIsUser(true);
+    } else {
+      setIsUser(false);
+    }
+  }, []);
+
+  // console.log(Object.keys(user).length);
+
   return (
     <div>
       <section className="review">
@@ -37,6 +52,9 @@ const ReviewById = () => {
           alt="image reviewer has chosen to represent the game"
         />
         <p>{review.review_body}</p>
+      </section>
+      <section>
+        {isUser ? <CommentForm /> : <p>Please log in to leave a comment!</p>}
       </section>
       <section className="comments">
         <h1>COMMENTS</h1>
