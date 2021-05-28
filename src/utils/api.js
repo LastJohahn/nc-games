@@ -55,4 +55,10 @@ export const voteAdder = async (review_id) => {
   return data;
 };
 
-export const postComment = async (username, body) => {};
+export const postComment = async (review_id, usernamePassed, bodyPassed) => {
+  const response = await gamesApi.post(`/reviews/${review_id}/comments`, {
+    username: usernamePassed,
+    body: bodyPassed,
+  });
+  return response;
+};
