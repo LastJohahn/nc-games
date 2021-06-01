@@ -31,6 +31,8 @@ const Nav = () => {
         {" "}
         <img src={user.avatar_url} />
         <span>{userInitials(user)}</span>
+        <br />
+        <span>{user.username}</span>
       </div>
     </nav>
   );
