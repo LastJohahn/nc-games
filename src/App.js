@@ -38,7 +38,7 @@ function App() {
           <Route exact path="/reviews/:review_id">
             <ReviewById />
           </Route>
-          <Route exact path="/:category">
+          <Route exact path="/categories/:category">
             <ReviewsByCategory
               reviews={reviews}
               setReviews={setReviews}
