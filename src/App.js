@@ -8,6 +8,7 @@ import Reviews from "./components/Reviews";
 import ReviewsByCategory from "./components/ReviewsByCategory";
 import { getCategories } from "./utils/api";
 import { UserContext } from "./contexts/User";
+import WrongPath from "./components/WrongPath";
 
 function App() {
   const [reviews, setReviews] = useState([]);
@@ -44,6 +45,9 @@ function App() {
               setReviews={setReviews}
               categories={categories}
             />
+          </Route>
+          <Route path="/">
+            <WrongPath />
           </Route>
         </Switch>
       </UserContext.Provider>
