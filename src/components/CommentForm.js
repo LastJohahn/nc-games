@@ -15,24 +15,22 @@ const CommentForm = ({ review_id, setCommentsOnReview }) => {
           e.preventDefault();
           postComment(review_id, user.username, comment)
             .then((comment) => {
-              console.log(comment, "<<before");
               setCommentsOnReview((currComments) => {
-                const newComments = [comment, ...currComments];
+                const newComments = [comment[0], ...currComments];
+                setComment("");
                 return newComments;
               });
-              console.log(comment, "<<after"); // this doesn't work yet!!
             })
             .catch((err) => {
               console.log(err);
               setIsCommentError(true);
             });
-          // update comments (have them be their own state or do it via rerender?)
-          // clear form
         }}
       >
         <label htmlFor="commentText">SUBMIT A COMMENT</label>
         <br></br>
         <textarea
+          value={comment}
           type="textarea"
           id="commentText"
           name="commentText"
