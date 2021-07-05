@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { UserContext } from "../contexts/User";
 
-const Nav = () => {
+const Nav = ({ categories }) => {
   const history = useHistory();
   const { user } = useContext(UserContext);
 
@@ -10,13 +10,14 @@ const Nav = () => {
     let path = `/`;
     history.push(path);
   };
+  console.log(categories); // categories as drop down
 
   const userInitials = (user) => {
     const fullName = user.name.split(" ");
     const initials = fullName.shift().charAt(0) + fullName.pop().charAt(0);
     return initials.toUpperCase();
   };
-  console.log(user);
+
   return (
     <nav className="nav">
       <button
@@ -27,7 +28,7 @@ const Nav = () => {
       >
         HOME
       </button>
-      <div>
+      <div className="nav nav__user">
         {" "}
         <img src={user.avatar_url} />
         <span>{userInitials(user)}</span>
@@ -39,7 +40,3 @@ const Nav = () => {
 };
 
 export default Nav;
-
-// home button
-// categories as drop down
-// logged in user w letter in nav
