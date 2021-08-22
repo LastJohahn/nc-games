@@ -15,7 +15,8 @@ const ReviewById = () => {
 
   useEffect(() => {
     getReviewById(review_id).then((result) => {
-      setReview(result.review[0]);
+      console.log(result.review);
+      setReview(result.review);
     });
   }, [review_id]);
 
@@ -41,6 +42,7 @@ const ReviewById = () => {
     <div>
       <section className="review">
         <h1>REVIEW</h1>
+
         <h2 className="review review__title">{review.title}</h2>
         <p>{`comments: ${review.comment_count}`}</p>
         <Votes review={review} />
@@ -63,6 +65,7 @@ const ReviewById = () => {
       </section>
       <section className="comments">
         <h1>COMMENTS</h1>
+
         <ul className="comments comments__list">
           {commentsOnReview.map((comment) => {
             return (
