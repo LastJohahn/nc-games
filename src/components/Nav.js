@@ -10,7 +10,10 @@ const Nav = ({ categories }) => {
     let path = `/`;
     history.push(path);
   };
-  console.log(categories); // categories as drop down
+
+  // categories as drop down, just map over them below & get them in there
+  // then buttons that redirect there, however that worked
+  // then integrate drop down menu functionality
 
   const userInitials = (user) => {
     const fullName = user.name.split(" ");
@@ -28,6 +31,11 @@ const Nav = ({ categories }) => {
       >
         HOME
       </button>
+      {categories.map((category) => {
+        return (
+          <button>{category.slug.replaceAll("-", " ").toUpperCase()}</button>
+        );
+      })}
       <div className="nav nav__user">
         {" "}
         <img src={user.avatar_url} />
