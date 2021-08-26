@@ -15,7 +15,6 @@ const ReviewById = () => {
 
   useEffect(() => {
     getReviewById(review_id).then((result) => {
-      console.log(result.review);
       setReview(result.review);
     });
   }, [review_id]);
