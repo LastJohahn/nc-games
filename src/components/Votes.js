@@ -7,6 +7,17 @@ const Votes = ({ review }) => {
 
   const isDisabled = reviewVotes > 0;
 
+  const vote = () => {
+    setReviewVotes(1);
+    voteAdder(review.review_id)
+      .then(() => {
+        setVoteError(false);
+      })
+      .catch((err) => {
+        setVoteError(true);
+      });
+  };
+
   return (
     <div className="votes">
       <p>{`votes: ${review.votes + reviewVotes}`}</p>
@@ -14,14 +25,7 @@ const Votes = ({ review }) => {
         className="votes votes__button"
         disabled={isDisabled}
         onClick={() => {
-          setReviewVotes(1);
-          voteAdder(review.review_id)
-            .then(() => {
-              setVoteError(false);
-            })
-            .catch((err) => {
-              setVoteError(true);
-            });
+          vote();
         }}
       >
         VOTE
