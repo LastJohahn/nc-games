@@ -60,7 +60,7 @@ const Nav = ({ categories }) => {
       )}
       <div className="nav nav__user">
         {" "}
-        <img src={user.avatar_url} />
+        <img src={user.avatar_url} alt="user avatar" />
         <span>{userInitials(user)}</span>
         <br />
         <span>{user.username}</span>
