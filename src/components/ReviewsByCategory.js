@@ -12,7 +12,7 @@ const ReviewsByCategory = ({ reviews, setReviews }) => {
       const reviewsToUse = result.reviews;
       setReviews(reviewsToUse);
     });
-  }, []);
+  }, [setReviews]);
 
   return (
     <div className="reviewsByCategory">
