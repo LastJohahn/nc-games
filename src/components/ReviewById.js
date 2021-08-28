@@ -35,6 +35,7 @@ const ReviewById = () => {
     } else {
       setIsUser(false);
     }
+    // eslint-disable-next-line
   }, []);
 
   return (
