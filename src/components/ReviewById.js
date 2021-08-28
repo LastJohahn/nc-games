@@ -48,7 +48,7 @@ const ReviewById = () => {
         <p>{`posted by: ${review.owner}`}</p>
         <img
           src={`${review.review_img_url}`}
-          alt="image reviewer has chosen to represent the game"
+          alt="what the reviewer has chosen to represent the game"
         />
         <p>{review.review_body}</p>
       </section>
