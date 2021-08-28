@@ -73,7 +73,7 @@ const Reviews = ({ reviews, setReviews }) => {
               <p>{`posted by: ${review.owner}`}</p>
               <img
                 src={review.review_img_url}
-                alt="image reviewer has chosen to represent the game"
+                alt="what the reviewer has chosen to represent the game"
               ></img>
               <p>{review.review_body}</p>
             </li>
