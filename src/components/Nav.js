@@ -49,6 +49,7 @@ const Nav = ({ categories }) => {
                 onClick={() => {
                   routeChangeCategory(category.slug);
                 }}
+                key={category.slug}
               >
                 {category.slug.replaceAll("-", " ").toUpperCase()}
               </button>
