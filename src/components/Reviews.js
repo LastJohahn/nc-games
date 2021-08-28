@@ -18,7 +18,7 @@ const Reviews = ({ reviews, setReviews }) => {
         setReviews(reviewsToUse);
       }
     });
-  }, [sortBy, sortByComments]);
+  }, [sortBy, sortByComments, setReviews]);
 
   return (
     <div className="reviews">
