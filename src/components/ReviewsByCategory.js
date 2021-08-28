@@ -18,25 +18,28 @@ const ReviewsByCategory = ({ reviews, setReviews }) => {
     <div className="reviewsByCategory">
       <h1>{category.replaceAll("-", " ").toUpperCase()}</h1>
       <ul className="reviewsByCategory reviewsByCategory__list">
-        {reviews.map((review) => {
-          if (review.category === category) {
-            return (
-              <li key={review.review_id}>
-                <Link to={`/reviews/${review.review_id}`}>
-                  <h2 className="reviews reviews__title">{review.title}</h2>
-                </Link>
-                <p>{`comments: ${review.comment_count}`}</p>
-                <Votes review={review} />
-                <p>{`posted by: ${review.owner}`}</p>
-                <img
-                  src={review.review_img_url}
-                  alt="what the reviewer has chosen to represent the game"
-                ></img>
-                <p>{review.review_body}</p>
-              </li>
-            );
-          }
-        })}
+        {
+          // eslint-disable-next-line
+          reviews.map((review) => {
+            if (review.category === category) {
+              return (
+                <li key={review.review_id}>
+                  <Link to={`/reviews/${review.review_id}`}>
+                    <h2 className="reviews reviews__title">{review.title}</h2>
+                  </Link>
+                  <p>{`comments: ${review.comment_count}`}</p>
+                  <Votes review={review} />
+                  <p>{`posted by: ${review.owner}`}</p>
+                  <img
+                    src={review.review_img_url}
+                    alt="what the reviewer has chosen to represent the game"
+                  ></img>
+                  <p>{review.review_body}</p>
+                </li>
+              );
+            }
+          })
+        }
       </ul>
     </div>
   );
