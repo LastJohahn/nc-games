@@ -25,8 +25,13 @@ export const getReviews = async (sortBy) => {
 };
 
 export const getReviewById = async (review_id) => {
-  const { data } = await gamesApi.get(`/reviews/${review_id}`);
-  return data;
+  try {
+    const { data } = await gamesApi.get(`/reviews/${review_id}`);
+    return data;
+  } catch (err) {
+    console.log(err, "getREviewsById");
+    return {};
+  }
 };
 
 export const getCommentsById = async (review_id) => {
