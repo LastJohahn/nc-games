@@ -4,9 +4,11 @@ import { getCommentsById, getReviewById } from "../utils/api";
 import { UserContext } from "../contexts/User";
 import CommentForm from "./CommentForm.js";
 import Votes from "./Votes.js";
+import WrongPath from "./WrongPath.js";
 
 const ReviewById = () => {
   const [review, setReview] = useState({});
+  const [isReview, setIsReview] = useState();
   const [commentsOnReview, setCommentsOnReview] = useState([]);
   const [isUser, setIsUser] = useState();
   const { user } = useContext(UserContext);
@@ -15,7 +17,14 @@ const ReviewById = () => {
 
   useEffect(() => {
     getReviewById(review_id).then((result) => {
-      setReview(result.review);
+      if (result.review) {
+        console.log(result, "result");
+        setIsReview(true);
+        setReview(result.review);
+      } else {
+        setIsReview(false);
+        setReview({});
+      }
     });
   }, [review_id]);
 
@@ -41,17 +50,22 @@ const ReviewById = () => {
   return (
     <div>
       <section className="review">
-        <h1>REVIEW</h1>
-
-        <h2 className="review review__title">{review.title}</h2>
-        <p>{`comments: ${review.comment_count}`}</p>
-        <Votes review={review} />
-        <p>{`posted by: ${review.owner}`}</p>
-        <img
-          src={`${review.review_img_url}`}
-          alt="what the reviewer has chosen to represent the game"
-        />
-        <p>{review.review_body}</p>
+        {isReview ? (
+          <>
+            <h1>REVIEW</h1>
+            <h2 className="review review__title">{review.title}</h2>
+            <p>{`comments: ${review.comment_count}`}</p>
+            <Votes review={review} />
+            <p>{`posted by: ${review.owner}`}</p>
+            <img
+              src={`${review.review_img_url}`}
+              alt="what the reviewer has chosen to represent the game"
+            />
+            <p>{review.review_body}</p>
+          </>
+        ) : (
+          <WrongPath />
+        )}
       </section>
       <section>
         {isUser ? (
@@ -65,7 +79,6 @@ const ReviewById = () => {
       </section>
       <section className="comments">
         <h1>COMMENTS</h1>
-
         <ul className="comments comments__list">
           {commentsOnReview.map((comment) => {
             return (
