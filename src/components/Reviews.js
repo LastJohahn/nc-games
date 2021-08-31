@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { getReviews } from "../utils/api.js";
 import { commentsSortBy } from "../utils/comments.js";
-import Votes from "./Votes.js";
+import ReviewCard from "./ReviewCard.js";
 
 const Reviews = ({ reviews, setReviews }) => {
   const [sortBy, setSortBy] = useState("");
@@ -63,21 +62,7 @@ const Reviews = ({ reviews, setReviews }) => {
       </button>
       <ul className="reviews reviews__list">
         {reviews.map((review) => {
-          return (
-            <li key={review.review_id}>
-              <Link to={`/reviews/${review.review_id}`}>
-                <h2 className="reviews reviews__title">{review.title}</h2>
-              </Link>
-              <p>{`comments: ${review.comment_count}`}</p>
-              <Votes review={review} />
-              <p>{`posted by: ${review.owner}`}</p>
-              <img
-                src={review.review_img_url}
-                alt="what the reviewer has chosen to represent the game"
-              ></img>
-              <p>{review.review_body}</p>
-            </li>
-          );
+          return <ReviewCard review={review} key={review.review_id} />;
         })}
       </ul>
     </div>
