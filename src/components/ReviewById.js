@@ -5,11 +5,13 @@ import { UserContext } from "../contexts/User";
 import CommentForm from "./CommentForm.js";
 import Votes from "./Votes.js";
 import WrongPath from "./WrongPath.js";
+import LoadingScreen from "./LoadingScreen";
 
 const ReviewById = () => {
   const [review, setReview] = useState({});
   const [isReview, setIsReview] = useState();
   const [commentsOnReview, setCommentsOnReview] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [isUser, setIsUser] = useState();
   const { user } = useContext(UserContext);
 
@@ -17,8 +19,8 @@ const ReviewById = () => {
 
   useEffect(() => {
     getReviewById(review_id).then((result) => {
+      setIsLoading(false);
       if (result.review) {
-        console.log(result, "result");
         setIsReview(true);
         setReview(result.review);
       } else {
@@ -47,7 +49,9 @@ const ReviewById = () => {
     // eslint-disable-next-line
   }, []);
 
-  return (
+  return isLoading ? (
+    <LoadingScreen />
+  ) : (
     <div>
       <section className="review">
         {isReview ? (
