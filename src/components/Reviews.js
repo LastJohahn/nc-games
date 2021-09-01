@@ -2,13 +2,16 @@ import React, { useEffect, useState } from "react";
 import { getReviews } from "../utils/api.js";
 import { commentsSortBy } from "../utils/comments.js";
 import ReviewCard from "./ReviewCard.js";
+import LoadingScreen from "./LoadingScreen.js";
 
 const Reviews = ({ reviews, setReviews }) => {
   const [sortBy, setSortBy] = useState("");
   const [sortByComments, setSortByComments] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     getReviews(sortBy).then((result) => {
+      setIsLoading(false);
       const reviewsToUse = result.reviews;
       if (sortByComments === false) {
         setReviews(reviewsToUse);
@@ -19,7 +22,9 @@ const Reviews = ({ reviews, setReviews }) => {
     });
   }, [sortBy, sortByComments, setReviews]);
 
-  return (
+  return isLoading ? (
+    <LoadingScreen />
+  ) : (
     <div className="reviews">
       <h2>REVIEWS</h2>
       <button
