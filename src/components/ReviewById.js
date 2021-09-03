@@ -11,6 +11,7 @@ const ReviewById = () => {
   const [review, setReview] = useState({});
   const [isReview, setIsReview] = useState();
   const [commentsOnReview, setCommentsOnReview] = useState([]);
+  const [hasComments, setHasComments] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [isUser, setIsUser] = useState();
   const { user } = useContext(UserContext);
@@ -35,6 +36,7 @@ const ReviewById = () => {
       if (result.comments) {
         setCommentsOnReview(result.comments);
       } else {
+        setHasComments(false);
         setCommentsOnReview(result);
       }
     });
@@ -81,19 +83,23 @@ const ReviewById = () => {
           <p>Please log in to leave a comment!</p>
         )}
       </section>
-      <section className="comments">
-        <h1>COMMENTS</h1>
-        <ul className="comments comments__list">
-          {commentsOnReview.map((comment) => {
-            return (
-              <li key={comment.comment_id}>
-                <h3 className="comments comments__list comments__list__poster">{`posted by: ${comment.author}`}</h3>
-                <p>{comment.body}</p>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
+      {hasComments ? (
+        <section className="comments">
+          <h1>COMMENTS</h1>
+          <ul className="comments comments__list">
+            {commentsOnReview.map((comment) => {
+              return (
+                <li key={comment.comment_id}>
+                  <h3 className="comments comments__list comments__list__poster">{`posted by: ${comment.author}`}</h3>
+                  <p>{comment.body}</p>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ) : (
+        <h2>Looks like this review has no comments! Why not leave one?</h2>
+      )}
     </div>
   );
 };
