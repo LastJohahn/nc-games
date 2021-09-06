@@ -34,6 +34,10 @@ const ReviewById = () => {
   useEffect(() => {
     getCommentsById(review_id).then((result) => {
       if (result.comments) {
+        let sortedComments = result.comments;
+        sortedComments.sort((a, b) => {
+          return new Date(b.created_at) - new Date(a.created_at);
+        });
         setCommentsOnReview(result.comments);
       } else {
         setHasComments(false);
@@ -50,6 +54,11 @@ const ReviewById = () => {
     }
     // eslint-disable-next-line
   }, []);
+
+  const dateMaker = (timestamp) => {
+    const commentDate = new Date(timestamp);
+    return commentDate.toUTCString();
+  };
 
   return isLoading ? (
     <LoadingScreen />
@@ -86,12 +95,18 @@ const ReviewById = () => {
       {hasComments ? (
         <section className="comments">
           <h1>COMMENTS</h1>
+          <button className="comments comments_sortButton--state-active">
+            posted on
+          </button>
+          <button className="comments comments_sortButton">votes</button>
           <ul className="comments comments__list">
             {commentsOnReview.map((comment) => {
               return (
                 <li key={comment.comment_id}>
                   <h3 className="comments comments__list comments__list__poster">{`posted by: ${comment.author}`}</h3>
                   <p>{comment.body}</p>
+                  <p>posted on: {dateMaker(comment.created_at)}</p>
+                  <p>votes: {comment.votes}</p>
                 </li>
               );
             })}
