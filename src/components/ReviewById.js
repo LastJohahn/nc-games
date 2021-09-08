@@ -10,10 +10,14 @@ import LoadingScreen from "./LoadingScreen";
 const ReviewById = () => {
   const [review, setReview] = useState({});
   const [isReview, setIsReview] = useState();
+
   const [commentsOnReview, setCommentsOnReview] = useState([]);
   const [hasComments, setHasComments] = useState(true);
+  const [sortCommentsByVotes, setSortCommentsByVotes] = useState(false);
+
   const [isLoading, setIsLoading] = useState(true);
   const [isUser, setIsUser] = useState();
+
   const { user } = useContext(UserContext);
 
   const { review_id } = useParams();
@@ -35,16 +39,22 @@ const ReviewById = () => {
     getCommentsById(review_id).then((result) => {
       if (result.comments) {
         let sortedComments = result.comments;
-        sortedComments.sort((a, b) => {
-          return new Date(b.created_at) - new Date(a.created_at);
-        });
+        if (!sortCommentsByVotes) {
+          sortedComments.sort((a, b) => {
+            return new Date(b.created_at) - new Date(a.created_at);
+          });
+        } else {
+          sortedComments.sort((a, b) => {
+            return b.votes - a.votes;
+          });
+        }
         setCommentsOnReview(result.comments);
       } else {
         setHasComments(false);
         setCommentsOnReview(result);
       }
     });
-  }, [review_id]);
+  }, [review_id, sortCommentsByVotes]);
 
   useEffect(() => {
     if (Object.keys(user).length > 0) {
@@ -95,10 +105,30 @@ const ReviewById = () => {
       {hasComments ? (
         <section className="comments">
           <h1>COMMENTS</h1>
-          <button className="comments comments__sortButton--state-active">
+          <button
+            className={
+              sortCommentsByVotes
+                ? "comments comments__sortButton"
+                : "comments comments__sortButton--state-active"
+            }
+            onClick={() => {
+              setSortCommentsByVotes(false);
+            }}
+          >
             posted on
           </button>
-          <button className="comments comments__sortButton">votes</button>
+          <button
+            className={
+              sortCommentsByVotes
+                ? "comments comments__sortButton--state-active"
+                : "comments comments_sortButton"
+            }
+            onClick={() => {
+              setSortCommentsByVotes(true);
+            }}
+          >
+            votes
+          </button>
           <ul className="comments comments__list">
             {commentsOnReview.map((comment) => {
               return (
