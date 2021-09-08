@@ -95,10 +95,10 @@ const ReviewById = () => {
       {hasComments ? (
         <section className="comments">
           <h1>COMMENTS</h1>
-          <button className="comments comments_sortButton--state-active">
+          <button className="comments comments__sortButton--state-active">
             posted on
           </button>
-          <button className="comments comments_sortButton">votes</button>
+          <button className="comments comments__sortButton">votes</button>
           <ul className="comments comments__list">
             {commentsOnReview.map((comment) => {
               return (
