@@ -10,12 +10,13 @@ import LoadingScreen from "./LoadingScreen";
 const ReviewById = () => {
   const [review, setReview] = useState({});
   const [isReview, setIsReview] = useState();
+  const [isLoadingReview, setIsLoadingReview] = useState(true);
 
   const [commentsOnReview, setCommentsOnReview] = useState([]);
   const [hasComments, setHasComments] = useState(true);
   const [sortCommentsByVotes, setSortCommentsByVotes] = useState(false);
+  const [isLoadingComments, setIsLoadingComments] = useState(true);
 
-  const [isLoading, setIsLoading] = useState(true);
   const [isUser, setIsUser] = useState();
 
   const { user } = useContext(UserContext);
@@ -24,7 +25,7 @@ const ReviewById = () => {
 
   useEffect(() => {
     getReviewById(review_id).then((result) => {
-      setIsLoading(false);
+      setIsLoadingReview(false);
       if (result.review) {
         setIsReview(true);
         setReview(result.review);
@@ -37,6 +38,7 @@ const ReviewById = () => {
 
   useEffect(() => {
     getCommentsById(review_id).then((result) => {
+      setIsLoadingComments(false);
       if (result.comments) {
         let sortedComments = result.comments;
         if (!sortCommentsByVotes) {
@@ -70,10 +72,10 @@ const ReviewById = () => {
     return commentDate.toUTCString();
   };
 
-  return isLoading ? (
+  return isLoadingReview ? (
     <LoadingScreen />
   ) : (
-    <div>
+    <div className="reviewAndComments">
       <section className="review">
         {isReview ? (
           <>
@@ -102,48 +104,56 @@ const ReviewById = () => {
           <p>Please log in to leave a comment!</p>
         )}
       </section>
-      {hasComments ? (
-        <section className="comments">
-          <h1>COMMENTS</h1>
-          <button
-            className={
-              sortCommentsByVotes
-                ? "comments comments__sortButton"
-                : "comments comments__sortButton--state-active"
-            }
-            onClick={() => {
-              setSortCommentsByVotes(false);
-            }}
-          >
-            posted on
-          </button>
-          <button
-            className={
-              sortCommentsByVotes
-                ? "comments comments__sortButton--state-active"
-                : "comments comments_sortButton"
-            }
-            onClick={() => {
-              setSortCommentsByVotes(true);
-            }}
-          >
-            votes
-          </button>
-          <ul className="comments comments__list">
-            {commentsOnReview.map((comment) => {
-              return (
-                <li key={comment.comment_id}>
-                  <h3 className="comments comments__list comments__list__poster">{`posted by: ${comment.author}`}</h3>
-                  <p>{comment.body}</p>
-                  <p>posted on: {dateMaker(comment.created_at)}</p>
-                  <p>votes: {comment.votes}</p>
-                </li>
-              );
-            })}
-          </ul>
-        </section>
+      {isLoadingComments ? (
+        <LoadingScreen className="comments" />
       ) : (
-        <h2>Looks like this review has no comments! Why not leave one?</h2>
+        <section>
+          {hasComments ? (
+            <section className="comments">
+              <h1>COMMENTS</h1>
+              <button
+                className={
+                  sortCommentsByVotes
+                    ? "comments comments__sortButton"
+                    : "comments comments__sortButton--state-active"
+                }
+                onClick={() => {
+                  setSortCommentsByVotes(false);
+                  setIsLoadingComments(true);
+                }}
+              >
+                posted on
+              </button>
+              <button
+                className={
+                  sortCommentsByVotes
+                    ? "comments comments__sortButton--state-active"
+                    : "comments comments_sortButton"
+                }
+                onClick={() => {
+                  setSortCommentsByVotes(true);
+                  setIsLoadingComments(true);
+                }}
+              >
+                votes
+              </button>
+              <ul className="comments comments__list">
+                {commentsOnReview.map((comment) => {
+                  return (
+                    <li key={comment.comment_id}>
+                      <h3 className="comments comments__list comments__list__poster">{`posted by: ${comment.author}`}</h3>
+                      <p>{comment.body}</p>
+                      <p>posted on: {dateMaker(comment.created_at)}</p>
+                      <p>votes: {comment.votes}</p>
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+          ) : (
+            <h2>Looks like this review has no comments! Why not leave one?</h2>
+          )}
+        </section>
       )}
     </div>
   );
