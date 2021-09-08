@@ -68,3 +68,11 @@ img {
   background-color: grey;
   border-bottom: black solid 2px;
 }
+
+.comments__sortButton {
+  background-color: gainsboro;
+}
+
+.comments__sortButton--state-active {
+  background-color: rgb(185, 182, 182);
+}
