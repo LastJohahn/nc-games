@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getReviews } from "../utils/api.js";
+import { getAllReviews, getReviews } from "../utils/api.js";
 import { commentsSortBy } from "../utils/comments.js";
 import ReviewCard from "./ReviewCard.js";
 import LoadingScreen from "./LoadingScreen.js";
@@ -9,6 +9,14 @@ const Reviews = ({ reviews, setReviews }) => {
   const [sortByComments, setSortByComments] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [page, setPage] = useState(1);
+  const [pageLimit, setPageLimit] = useState(100);
+
+  useEffect(() => {
+    getAllReviews().then((result) => {
+      let maxPage = Math.floor(result.reviews.length / 10) + 1;
+      setPageLimit(maxPage);
+    });
+  }, []);
 
   useEffect(() => {
     getReviews(sortBy, page).then((result) => {
@@ -45,11 +53,11 @@ const Reviews = ({ reviews, setReviews }) => {
         </button>
         <button
           className={
-            page === 3
+            page === pageLimit
               ? "reviews reviews__pageButton--state-inactive"
               : "reviews reviews__pageButton"
           }
-          disabled={page === 3}
+          disabled={page === pageLimit}
           onClick={() => {
             let newPage = page + 1;
             setPage(newPage);
