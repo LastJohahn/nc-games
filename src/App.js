@@ -47,7 +47,12 @@ function App() {
               categories={categories}
             />
           </Route>
-          <Route exact path="/users/:username">
+          <Route
+            exact
+            path="/users/:username"
+            reviews={reviews}
+            setReviews={setReviews}
+          >
             <User />
           </Route>
           <Route path="/">
