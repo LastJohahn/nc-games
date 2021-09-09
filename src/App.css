@@ -46,6 +46,10 @@ img {
   background-color: rgb(185, 182, 182);
 }
 
+.reviews__pageButton--state-inactive {
+  color: grey;
+}
+
 .review {
   background-color: gainsboro;
 }
