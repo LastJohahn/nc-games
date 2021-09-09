@@ -50,7 +50,7 @@ const ReviewById = () => {
             return b.votes - a.votes;
           });
         }
-        setCommentsOnReview(result.comments);
+        setCommentsOnReview(sortedComments);
       } else {
         setHasComments(false);
         setCommentsOnReview(result);
