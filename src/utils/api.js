@@ -36,6 +36,16 @@ export const getReviewById = async (review_id) => {
   }
 };
 
+export const getAllReviews = async () => {
+  try {
+    const { data } = await gamesApi.get("/reviews?limit=10000");
+    return data;
+  } catch (err) {
+    console.log(err, "getAllReviews");
+    return [];
+  }
+};
+
 export const getCommentsById = async (review_id) => {
   try {
     const { data } = await gamesApi.get(`/reviews/${review_id}/comments`);
