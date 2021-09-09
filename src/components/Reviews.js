@@ -8,9 +8,10 @@ const Reviews = ({ reviews, setReviews }) => {
   const [sortBy, setSortBy] = useState("");
   const [sortByComments, setSortByComments] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    getReviews(sortBy).then((result) => {
+    getReviews(sortBy, page).then((result) => {
       setIsLoading(false);
       const reviewsToUse = result.reviews;
       if (sortByComments === false) {
