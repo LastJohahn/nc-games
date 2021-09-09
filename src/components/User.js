@@ -1,7 +1,39 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
+import { getAllReviews } from "../utils/api";
+import LoadingScreen from "./LoadingScreen";
+import ReviewCard from "./ReviewCard";
 
-const User = () => {
-  return <h2>USER</h2>;
+const User = ({ reviews, setReviews }) => {
+  const { username } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    getAllReviews().then((result) => {
+      const reviewsByUser = result.reviews.filter(
+        (review) => review.owner === username
+      );
+      setReviews(reviewsByUser);
+      setIsLoading(false);
+    });
+  }, [username]);
+
+  // "seems like this user hasn't posted any reviews yet! logic if no reviews"
+
+  return isLoading ? (
+    <LoadingScreen />
+  ) : (
+    <div>
+      <h2>{username.toUpperCase()}</h2>
+      <section className="reviews">
+        <ul className="reviews reviews__list">
+          {reviews.map((review) => {
+            return <ReviewCard review={review} key={review.review_id} />;
+          })}
+        </ul>
+      </section>
+    </div>
+  );
 };
 
 export default User;
