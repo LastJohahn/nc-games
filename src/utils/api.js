@@ -4,10 +4,10 @@ const gamesApi = axios.create({
   baseURL: "https://nc-games-api-lastjohahn.herokuapp.com/api",
 });
 
-export const getReviews = async (sortBy) => {
+export const getReviews = async (sortBy, page) => {
   if (sortBy === "") {
     try {
-      const { data } = await gamesApi.get("/reviews");
+      const { data } = await gamesApi.get(`/reviews?p=${page}`);
       return data;
     } catch (err) {
       console.log(err, "getReviews no sort");
@@ -15,7 +15,9 @@ export const getReviews = async (sortBy) => {
     }
   } else {
     try {
-      const { data } = await gamesApi.get(`/reviews?sort_by=${sortBy}`);
+      const { data } = await gamesApi.get(
+        `/reviews?sort_by=${sortBy}&p=${page}`
+      );
       return data;
     } catch (err) {
       console.log(err, "getReviews sort");
