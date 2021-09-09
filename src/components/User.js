@@ -18,8 +18,6 @@ const User = ({ reviews, setReviews }) => {
     });
   }, [username]);
 
-  // "seems like this user hasn't posted any reviews yet! logic if no reviews"
-
   return isLoading ? (
     <LoadingScreen />
   ) : (
