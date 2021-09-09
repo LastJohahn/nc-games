@@ -21,13 +21,45 @@ const Reviews = ({ reviews, setReviews }) => {
         setReviews(reviewsToUse);
       }
     });
-  }, [sortBy, sortByComments, setReviews]);
+  }, [sortBy, sortByComments, setReviews, page]);
+
+  console.log(page);
 
   return isLoading ? (
     <LoadingScreen />
   ) : (
     <div className="reviews">
       <h2>REVIEWS</h2>
+      <section className="reviews reviews__pageButtons">
+        <button
+          className={
+            page === 1
+              ? "reviews reviews__pageButton--state-inactive"
+              : "reviews reviews__pageButton"
+          }
+          disabled={page === 1}
+          onClick={() => {
+            let newPage = page - 1;
+            setPage(newPage);
+          }}
+        >
+          PREVIOUS PAGE
+        </button>
+        <button
+          className={
+            page === 3
+              ? "reviews reviews__pageButton--state-inactive"
+              : "reviews reviews__pageButton"
+          }
+          disabled={page === 3}
+          onClick={() => {
+            let newPage = page + 1;
+            setPage(newPage);
+          }}
+        >
+          NEXT PAGE
+        </button>
+      </section>
       <button
         className={
           sortBy === "" && sortByComments === false
