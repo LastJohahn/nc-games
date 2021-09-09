@@ -23,8 +23,6 @@ const Reviews = ({ reviews, setReviews }) => {
     });
   }, [sortBy, sortByComments, setReviews, page]);
 
-  console.log(page);
-
   return isLoading ? (
     <LoadingScreen />
   ) : (
