@@ -10,7 +10,10 @@ const ReviewCard = ({ review }) => {
       </Link>
       <p>{`comments: ${review.comment_count}`}</p>
       <Votes review={review} />
-      <p>{`posted by: ${review.owner}`}</p>
+      <p>posted by: </p>
+      <Link to={`/users/${review.owner}`}>
+        <p>{`${review.owner}`}</p>
+      </Link>
       <img
         src={review.review_img_url}
         alt="what the reviewer has chosen to represent the game"
