@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { UserContext } from "../contexts/User";
 
 const Nav = ({ categories }) => {
@@ -64,7 +64,9 @@ const Nav = ({ categories }) => {
         <img src={user.avatar_url} alt="user avatar" />
         <span>{userInitials(user)}</span>
         <br />
-        <span>{user.username}</span>
+        <Link to={`/users/${user.username}`}>
+          <span>{user.username}</span>
+        </Link>
       </div>
     </nav>
   );
