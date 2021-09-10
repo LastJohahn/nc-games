@@ -16,7 +16,7 @@ const User = ({ reviews, setReviews }) => {
       setReviews(reviewsByUser);
       setIsLoading(false);
     });
-  }, [username]);
+  }, [username, setReviews]);
 
   return isLoading ? (
     <LoadingScreen />
