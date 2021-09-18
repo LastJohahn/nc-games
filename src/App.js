@@ -10,6 +10,7 @@ import { getCategories } from "./utils/api";
 import { UserContext } from "./contexts/User";
 import WrongPath from "./components/WrongPath";
 import User from "./components/User";
+import ReviewForm from "./components/ReviewForm";
 
 function App() {
   const [reviews, setReviews] = useState([]);
@@ -39,6 +40,9 @@ function App() {
           </Route>
           <Route exact path="/reviews/:review_id">
             <ReviewById />
+          </Route>
+          <Route exact path="/post-review">
+            <ReviewForm categories={categories} />
           </Route>
           <Route exact path="/categories/:category">
             <ReviewsByCategory

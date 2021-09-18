@@ -79,3 +79,20 @@ export const postComment = async (review_id, usernamePassed, bodyPassed) => {
   });
   return response.data.comment;
 };
+
+export const postReview = async (
+  usernamePassed,
+  titlePassed,
+  bodyPassed,
+  designerPassed,
+  categoryPassed
+) => {
+  const response = await gamesApi.post("/reviews", {
+    owner: usernamePassed,
+    title: titlePassed,
+    review_body: bodyPassed,
+    designer: designerPassed,
+    category: categoryPassed,
+  });
+  return response.data.review;
+};

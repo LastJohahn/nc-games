@@ -17,6 +17,11 @@ const Nav = ({ categories }) => {
     history.push(path);
   };
 
+  const routeChangePostReview = () => {
+    let path = "/post-review";
+    history.push(path);
+  };
+
   const userInitials = (user) => {
     const fullName = user.name.split(" ");
     const initials = fullName.shift().charAt(0) + fullName.pop().charAt(0);
@@ -67,6 +72,16 @@ const Nav = ({ categories }) => {
         <Link to={`/users/${user.username}`}>
           <span>{user.username}</span>
         </Link>
+      </div>
+      <div className="nav nav__postReview">
+        <button
+          className="nav nav__postReviewButton"
+          onClick={() => {
+            routeChangePostReview();
+          }}
+        >
+          POST NEW REVIEW
+        </button>
       </div>
     </nav>
   );

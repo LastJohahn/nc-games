@@ -4,11 +4,15 @@ import Votes from "./Votes.js";
 
 const ReviewCard = ({ review }) => {
   return (
-    <li key={review.review_id}>
+    <li key={review.review_id} className="reviews">
       <Link to={`/reviews/${review.review_id}`}>
         <h2 className="reviews reviews__title">{review.title}</h2>
       </Link>
-      <p>{`comments: ${review.comment_count}`}</p>
+      {review.comment_count ? (
+        <p>{`comments: ${review.comment_count}`}</p>
+      ) : (
+        <p>{`comments: 0`}</p>
+      )}
       <Votes review={review} />
       <p>posted by: </p>
       <Link to={`/users/${review.owner}`}>
