@@ -79,3 +79,5 @@ export const postComment = async (review_id, usernamePassed, bodyPassed) => {
   });
   return response.data.comment;
 };
+
+export const postReview = async () => {};
