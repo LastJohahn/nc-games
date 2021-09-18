@@ -42,7 +42,7 @@ function App() {
             <ReviewById />
           </Route>
           <Route exact path="/post-review">
-            <ReviewForm />
+            <ReviewForm categories={categories} />
           </Route>
           <Route exact path="/categories/:category">
             <ReviewsByCategory
