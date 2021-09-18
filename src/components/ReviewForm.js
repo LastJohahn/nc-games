@@ -1,14 +1,17 @@
 import React, { useContext, useState } from "react";
-import { useParams } from "react-router";
 import { UserContext } from "../contexts/User";
+import { postReview } from "../utils/api";
+import ReviewCard from "./ReviewCard.js";
 
 const ReviewForm = ({ categories }) => {
+  const { user } = useContext(UserContext);
   const [reviewTitle, setReviewTitle] = useState("");
   const [reviewBody, setReviewBody] = useState("");
   const [reviewDesigner, setReviewDesigner] = useState("");
   const [reviewCategory, setReviewCategory] = useState("");
   const [isReviewPosted, setIsReviewPosted] = useState(false);
   const [isReviewError, setIsReviewError] = useState(false);
+  const [postedReview, setPostedReview] = useState({});
 
   return (
     <div className="reviewForm">
@@ -16,6 +19,21 @@ const ReviewForm = ({ categories }) => {
         className="reviewForm__form"
         onSubmit={(e) => {
           e.preventDefault();
+          postReview(
+            user.username,
+            reviewTitle,
+            reviewBody,
+            reviewDesigner,
+            reviewCategory
+          )
+            .then((review) => {
+              setIsReviewPosted(true);
+              setPostedReview(review);
+            })
+            .catch((err) => {
+              setIsReviewError(true);
+              console.log(err);
+            });
         }}
       >
         <label htmlFor="reviewTitle">REVIEW TITLE</label>
@@ -69,7 +87,13 @@ const ReviewForm = ({ categories }) => {
         />
         <br />
         <input type="submit" value="POST REVIEW"></input>
+        {isReviewError && (
+          <p>Oops, something went wrong with posting your review!</p>
+        )}
       </form>
+      {isReviewPosted && (
+        <ReviewCard review={postedReview} key={postedReview.review_id} />
+      )}
     </div>
   );
 };
