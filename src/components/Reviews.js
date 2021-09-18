@@ -77,7 +77,7 @@ const Reviews = ({ reviews, setReviews }) => {
           setSortBy("");
         }}
       >
-        created_at
+        posted last
       </button>
       <button
         className={
@@ -102,7 +102,7 @@ const Reviews = ({ reviews, setReviews }) => {
           setSortByComments(true);
         }}
       >
-        comment_count
+        comments
       </button>
       <ul className="reviews reviews__list">
         {reviews.map((review) => {
