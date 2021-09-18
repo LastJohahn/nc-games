@@ -8,7 +8,11 @@ const ReviewCard = ({ review }) => {
       <Link to={`/reviews/${review.review_id}`}>
         <h2 className="reviews reviews__title">{review.title}</h2>
       </Link>
-      <p>{`comments: ${review.comment_count}`}</p>
+      {review.comment_count ? (
+        <p>{`comments: ${review.comment_count}`}</p>
+      ) : (
+        <p>{`comments: 0`}</p>
+      )}
       <Votes review={review} />
       <p>posted by: </p>
       <Link to={`/users/${review.owner}`}>
