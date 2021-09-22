@@ -96,3 +96,8 @@ export const postReview = async (
   });
   return response.data.review;
 };
+
+export const deleteReview = async (review_id) => {
+  const response = await gamesApi.delete(`/reviews/${review_id}`);
+  return response;
+};
