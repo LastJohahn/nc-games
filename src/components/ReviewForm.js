@@ -8,7 +8,7 @@ const ReviewForm = ({ categories }) => {
   const [reviewTitle, setReviewTitle] = useState("");
   const [reviewBody, setReviewBody] = useState("");
   const [reviewDesigner, setReviewDesigner] = useState("");
-  const [reviewCategory, setReviewCategory] = useState("");
+  const [reviewCategory, setReviewCategory] = useState("strategy");
   const [isReviewPosted, setIsReviewPosted] = useState(false);
   const [isReviewError, setIsReviewError] = useState(false);
   const [postedReview, setPostedReview] = useState({});
