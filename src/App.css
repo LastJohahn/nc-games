@@ -1,13 +1,18 @@
 .App {
   text-align: center;
+  background-color: grey;
 }
 
 .main_header {
   background-color: grey;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.8em;
 }
 
 .nav {
-  background-color: lightgray;
+  background-color: lightgrey;
 }
 
 img {
