@@ -35,7 +35,7 @@ const Reviews = ({ reviews, setReviews }) => {
     <LoadingScreen />
   ) : (
     <div className="reviews">
-      <h2>REVIEWS</h2>
+      <h2 className="reviews reviews__header">REVIEWS</h2>
       <section className="reviews reviews__pageButtons">
         <button
           className={
