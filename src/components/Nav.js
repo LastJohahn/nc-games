@@ -73,6 +73,7 @@ const Nav = ({ categories }) => {
         {" "}
         <img src={user.avatar_url} alt="user avatar" />
         <button
+          className="nav nav__userButton"
           onClick={() => {
             routeChangeUser(user.username);
           }}
