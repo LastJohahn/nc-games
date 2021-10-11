@@ -76,11 +76,11 @@ const ReviewById = () => {
     <LoadingScreen />
   ) : (
     <div className="reviewAndComments">
-      <section className="review">
+      <section className="single_review">
         {isReview ? (
           <>
-            <h1>REVIEW</h1>
-            <h2 className="review review__title">{review.title}</h2>
+            <h2 className="header single_review__header">REVIEW</h2>
+            <h2 className="header single_review__title">{review.title}</h2>
             <p>{`comments: ${review.comment_count}`}</p>
             <Votes review={review} />
             <p>{`posted by: ${review.owner}`}</p>
