@@ -66,44 +66,46 @@ const Reviews = ({ reviews, setReviews }) => {
           NEXT PAGE
         </button>
       </section>
-      <button
-        className={
-          sortBy === "" && sortByComments === false
-            ? "reviews reviews__sortButton--state-active"
-            : "reviews reviews__sortButton"
-        }
-        onClick={() => {
-          setSortByComments(false);
-          setSortBy("");
-        }}
-      >
-        posted last
-      </button>
-      <button
-        className={
-          sortBy === "votes" && sortByComments === false
-            ? "reviews reviews__sortButton--state-active"
-            : "reviews reviews__sortButton"
-        }
-        onClick={() => {
-          setSortByComments(false);
-          setSortBy("votes");
-        }}
-      >
-        votes
-      </button>
-      <button
-        className={
-          sortByComments === false
-            ? "reviews reviews__sortButton"
-            : "reviews reviews__sortButton--state-active"
-        }
-        onClick={() => {
-          setSortByComments(true);
-        }}
-      >
-        comments
-      </button>
+      <section className="reviews reviews__sortButtons">
+        <button
+          className={
+            sortBy === "" && sortByComments === false
+              ? "reviews reviews__sortButton--state-active"
+              : "reviews reviews__sortButton"
+          }
+          onClick={() => {
+            setSortByComments(false);
+            setSortBy("");
+          }}
+        >
+          posted last
+        </button>
+        <button
+          className={
+            sortBy === "votes" && sortByComments === false
+              ? "reviews reviews__sortButton--state-active"
+              : "reviews reviews__sortButton"
+          }
+          onClick={() => {
+            setSortByComments(false);
+            setSortBy("votes");
+          }}
+        >
+          votes
+        </button>
+        <button
+          className={
+            sortByComments === false
+              ? "reviews reviews__sortButton"
+              : "reviews reviews__sortButton--state-active"
+          }
+          onClick={() => {
+            setSortByComments(true);
+          }}
+        >
+          comments
+        </button>
+      </section>
       <ul className="reviews reviews__list">
         {reviews.map((review) => {
           return <ReviewCard review={review} key={review.review_id} />;
