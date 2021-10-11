@@ -56,6 +56,7 @@ const Nav = ({ categories }) => {
           {categories.map((category) => {
             return (
               <button
+                className="nav nav__categoryButton"
                 onClick={() => {
                   routeChangeCategory(category.slug);
                 }}
