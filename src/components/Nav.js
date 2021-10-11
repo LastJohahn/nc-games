@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { UserContext } from "../contexts/User";
 
 const Nav = ({ categories }) => {
@@ -19,6 +19,11 @@ const Nav = ({ categories }) => {
 
   const routeChangePostReview = () => {
     let path = "/post-review";
+    history.push(path);
+  };
+
+  const routeChangeUser = (username) => {
+    let path = `/users/${username}`;
     history.push(path);
   };
 
@@ -67,11 +72,13 @@ const Nav = ({ categories }) => {
       <div className="nav nav__user">
         {" "}
         <img src={user.avatar_url} alt="user avatar" />
-        <span>{userInitials(user)}</span>
-        <br />
-        <Link to={`/users/${user.username}`}>
-          <span>{user.username}</span>
-        </Link>
+        <button
+          onClick={() => {
+            routeChangeUser(user.username);
+          }}
+        >
+          {userInitials(user)}
+        </button>
       </div>
       <div className="nav nav__postReview">
         <button
