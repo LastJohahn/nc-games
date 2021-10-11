@@ -24,7 +24,9 @@ const ReviewsByCategory = ({ reviews, setReviews }) => {
     <LoadingScreen />
   ) : (
     <div className="reviewsByCategory">
-      <h1>{category.replaceAll("-", " ").toUpperCase()}</h1>
+      <h2 className="header reviewsByCategory__header">
+        {category.replaceAll("-", " ").toUpperCase()}
+      </h2>
       <ul className="reviewsByCategory reviewsByCategory__list">
         {
           // eslint-disable-next-line
