@@ -15,6 +15,7 @@ const ReviewForm = ({ categories }) => {
 
   return (
     <div className="reviewForm">
+      <h2 className="header reviewForm__header">SUBMIT A REVIEW</h2>
       <form
         className="reviewForm__form"
         onSubmit={(e) => {
