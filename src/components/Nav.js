@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { UserContext } from "../contexts/User";
+import DropdownMenu from "./DropdownMenu";
 
 const Nav = ({ categories }) => {
   const history = useHistory();
@@ -9,11 +10,6 @@ const Nav = ({ categories }) => {
 
   const routeChange = () => {
     let path = `/`;
-    history.push(path);
-  };
-
-  const routeChangeCategory = (category) => {
-    let path = `/categories/${category}`;
     history.push(path);
   };
 
@@ -43,33 +39,7 @@ const Nav = ({ categories }) => {
       >
         HOME
       </button>
-      <button
-        className="nav nav__categoryDropDownButton"
-        onClick={() => {
-          setIsOpen(!isOpen);
-        }}
-      >
-        CATEGORIES
-      </button>
-      {isOpen ? (
-        <div className="nav nav__categoryButtons">
-          {categories.map((category) => {
-            return (
-              <button
-                className="nav nav__categoryButton"
-                onClick={() => {
-                  routeChangeCategory(category.slug);
-                }}
-                key={category.slug}
-              >
-                {category.slug.replaceAll("-", " ").toUpperCase()}
-              </button>
-            );
-          })}
-        </div>
-      ) : (
-        <p></p>
-      )}
+      <DropdownMenu categories={categories} />
       <div className="nav nav__user">
         {" "}
         <img src={user.avatar_url} alt="user avatar" />
