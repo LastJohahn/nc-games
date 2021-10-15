@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { UserContext } from "../contexts/User";
 import DropdownMenu from "./DropdownMenu";
@@ -6,7 +6,6 @@ import DropdownMenu from "./DropdownMenu";
 const Nav = ({ categories }) => {
   const history = useHistory();
   const { user } = useContext(UserContext);
-  const [isOpen, setIsOpen] = useState(false);
 
   const routeChange = () => {
     let path = `/`;
