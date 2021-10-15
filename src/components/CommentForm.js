@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { UserContext } from "../contexts/User";
 import { postComment } from "../utils/api";
+import "../css/CommentForm.css";
 
 const CommentForm = ({ review_id, setCommentsOnReview }) => {
   const [comment, setComment] = useState("");
@@ -10,7 +11,7 @@ const CommentForm = ({ review_id, setCommentsOnReview }) => {
   return (
     <div className="commentForm">
       <form
-        className="commentForm__form"
+        className="form"
         onSubmit={(e) => {
           e.preventDefault();
           postComment(review_id, user.username, comment)
@@ -27,22 +28,31 @@ const CommentForm = ({ review_id, setCommentsOnReview }) => {
             });
         }}
       >
-        <label htmlFor="commentText">SUBMIT A COMMENT</label>
-        <br></br>
+        <label htmlFor="commentText" className="form__label">
+          SUBMIT A COMMENT
+        </label>
+        <br />
         <textarea
           value={comment}
           type="textarea"
           id="commentText"
           name="commentText"
+          className="form form__textarea"
           onChange={(e) => {
             setComment(e.target.value);
           }}
           required
         ></textarea>
-        <br></br>
-        <input type="submit" value="POST COMMENT"></input>
+        <br />
+        <input
+          type="submit"
+          value="POST COMMENT"
+          className="form form__submit"
+        ></input>
         {isCommentError && (
-          <p>Oops, something went wrong with posting your comment!</p>
+          <p className="p p__error">
+            Oops, something went wrong with posting your comment!
+          </p>
         )}
       </form>
     </div>
