@@ -1,0 +1,12 @@
+.form {
+  background-color: whitesmoke;
+  border: 3px solid grey;
+}
+
+.form__submit {
+  border: 1px solid grey;
+}
+
+.form__textarea {
+  border: 1px solid grey;
+}
