@@ -1,0 +1,13 @@
+.nav {
+  background-color: gainsboro;
+}
+
+.button {
+  border: 2px outset ThreeDLightShadow;
+  background-color: gainsboro;
+  cursor: pointer;
+}
+
+.button:active {
+  border: 2px inset ThreeDLightShadow;
+}
