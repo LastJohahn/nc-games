@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { UserContext } from "../contexts/User";
 import DropdownMenu from "./DropdownMenu";
+import "../css/Nav.css";
 
 const Nav = ({ categories }) => {
   const history = useHistory();
@@ -31,7 +32,7 @@ const Nav = ({ categories }) => {
   return (
     <nav className="nav">
       <button
-        className="nav nav__homeButton"
+        className="button"
         onClick={() => {
           routeChange();
         }}
@@ -43,7 +44,7 @@ const Nav = ({ categories }) => {
         {" "}
         <img src={user.avatar_url} alt="user avatar" />
         <button
-          className="nav nav__userButton"
+          className="button"
           onClick={() => {
             routeChangeUser(user.username);
           }}
@@ -53,7 +54,7 @@ const Nav = ({ categories }) => {
       </div>
       <div className="nav nav__postReview">
         <button
-          className="nav nav__postReviewButton"
+          className="button"
           onClick={() => {
             routeChangePostReview();
           }}
