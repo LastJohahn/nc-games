@@ -1,5 +1,10 @@
-.nav {
-  background-color: gainsboro;
+.navbar {
+  background-color: whitesmoke;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: black solid 2px;
+  margin: 5px;
 }
 
 .button {
@@ -10,4 +15,11 @@
 
 .button:active {
   border: 2px inset ThreeDLightShadow;
+}
+
+.userAvatar {
+  height: 50px;
+  margin: 4px;
+  border: 1px solid black;
+  border-radius: 25px;
 }
