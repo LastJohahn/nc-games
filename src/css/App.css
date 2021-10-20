@@ -49,8 +49,21 @@ img {
   border-bottom: black solid 2px;
 }
 
+.reviews__sortButton {
+  border: 2px outset ThreeDLightShadow;
+  background-color: gainsboro;
+  cursor: pointer;
+}
+
 .reviews__sortButton--state-active {
+  border: 2px inset ThreeDLightShadow;
   background-color: rgb(185, 182, 182);
+}
+
+.reviews__pageButton {
+  border: 2px outset ThreeDLightShadow;
+  background-color: gainsboro;
+  cursor: pointer;
 }
 
 .reviews__pageButton--state-inactive {
