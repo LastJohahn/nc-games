@@ -23,14 +23,8 @@ const Nav = ({ categories }) => {
     history.push(path);
   };
 
-  const userInitials = (user) => {
-    const fullName = user.name.split(" ");
-    const initials = fullName.shift().charAt(0) + fullName.pop().charAt(0);
-    return initials.toUpperCase();
-  };
-
   return (
-    <nav className="nav">
+    <nav className="navbar">
       <button
         className="button"
         onClick={() => {
@@ -40,18 +34,6 @@ const Nav = ({ categories }) => {
         HOME
       </button>
       <DropdownMenu categories={categories} />
-      <div className="nav nav__user">
-        {" "}
-        <img src={user.avatar_url} alt="user avatar" />
-        <button
-          className="button"
-          onClick={() => {
-            routeChangeUser(user.username);
-          }}
-        >
-          {userInitials(user)}
-        </button>
-      </div>
       <div className="nav nav__postReview">
         <button
           className="button"
@@ -59,9 +41,17 @@ const Nav = ({ categories }) => {
             routeChangePostReview();
           }}
         >
-          POST NEW REVIEW
+          POST
         </button>
       </div>
+      <img
+        className="userAvatar"
+        src={user.avatar_url}
+        alt="user avatar"
+        onClick={() => {
+          routeChangeUser(user.username);
+        }}
+      ></img>
     </nav>
   );
 };
