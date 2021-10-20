@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import CategoryLink from "./CategoryLink";
+import "../css/DropdownMenu.css";
 
 const DropdownMenu = ({ categories }) => {
   const dropdownRef = useRef(null);
