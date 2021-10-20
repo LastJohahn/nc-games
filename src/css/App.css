@@ -1,14 +1,16 @@
 .App {
   text-align: center;
-  background-color: grey;
+  background-color: gainsboro;
 }
 
 .header--main {
-  background-color: grey;
+  background-color: whitesmoke;
   display: flex;
   justify-content: center;
   text-align: center;
   font-size: 0.8em;
+  border: black solid 2px;
+  margin: 5px;
 }
 
 .reviews__header {
