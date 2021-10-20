@@ -3,6 +3,7 @@ import { getAllReviews, getReviews } from "../utils/api.js";
 import { commentsSortBy } from "../utils/comments.js";
 import ReviewCard from "./ReviewCard.js";
 import LoadingScreen from "./LoadingScreen.js";
+import "../css/Reviews.css";
 
 const Reviews = ({ reviews, setReviews }) => {
   const [sortBy, setSortBy] = useState("");
@@ -35,7 +36,7 @@ const Reviews = ({ reviews, setReviews }) => {
     <LoadingScreen />
   ) : (
     <div className="reviews">
-      <h2 className="header reviews__header">REVIEWS</h2>
+      <h2 className="reviews__header">REVIEWS</h2>
       <section className="reviews reviews__pageButtons">
         <button
           className={
