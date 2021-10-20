@@ -5,16 +5,10 @@
 
 .header--main {
   background-color: whitesmoke;
-  display: flex;
-  justify-content: center;
   text-align: center;
   font-size: 0.8em;
   border: black solid 2px;
   margin: 5px;
-}
-
-.reviews__header {
-  margin-top: 0;
 }
 
 img {
@@ -25,58 +19,6 @@ img {
   height: auto;
   margin-left: auto;
   margin-right: auto;
-}
-
-.reviews {
-  background-color: gainsboro;
-  list-style-type: none;
-}
-
-.reviews__list {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
-.reviewsByCategory__list {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
-
-.reviews__title {
-  background-color: grey;
-  border-bottom: black solid 2px;
-}
-
-.reviews__sortButton {
-  border: 2px outset ThreeDLightShadow;
-  background-color: gainsboro;
-  cursor: pointer;
-}
-
-.reviews__sortButton--state-active {
-  border: 2px inset ThreeDLightShadow;
-  background-color: rgb(185, 182, 182);
-}
-
-.reviews__pageButton {
-  border: 2px outset ThreeDLightShadow;
-  background-color: gainsboro;
-  cursor: pointer;
-}
-
-.reviews__pageButton--state-inactive {
-  color: grey;
-}
-
-.review {
-  background-color: gainsboro;
-}
-
-.review__title {
-  background-color: grey;
-  border-bottom: black solid 2px;
 }
 
 .comments {
