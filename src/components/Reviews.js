@@ -103,7 +103,7 @@ const Reviews = ({ reviews, setReviews }) => {
           </button>
         </div>
       </div>
-      <ul className="reviews reviews__list">
+      <ul className="reviews__list">
         {reviews.map((review) => {
           return <ReviewCard review={review} key={review.review_id} />;
         })}
