@@ -37,76 +37,72 @@ const Reviews = ({ reviews, setReviews }) => {
   ) : (
     <div className="reviews">
       <h2 className="reviews__header">REVIEWS</h2>
-      <section className="reviews reviews__pageButtons">
-        <button
-          className={
-            page === 1
-              ? "reviews reviews__pageButton--state-inactive"
-              : "reviews reviews__pageButton"
-          }
-          disabled={page === 1}
-          onClick={() => {
-            let newPage = page - 1;
-            setPage(newPage);
-          }}
-        >
-          PREVIOUS PAGE
-        </button>
-        <button
-          className={
-            page === pageLimit
-              ? "reviews reviews__pageButton--state-inactive"
-              : "reviews reviews__pageButton"
-          }
-          disabled={page === pageLimit}
-          onClick={() => {
-            let newPage = page + 1;
-            setPage(newPage);
-          }}
-        >
-          NEXT PAGE
-        </button>
-      </section>
-      <section className="reviews reviews__sortButtons">
-        <button
-          className={
-            sortBy === "" && sortByComments === false
-              ? "reviews reviews__sortButton--state-active"
-              : "reviews reviews__sortButton"
-          }
-          onClick={() => {
-            setSortByComments(false);
-            setSortBy("");
-          }}
-        >
-          posted last
-        </button>
-        <button
-          className={
-            sortBy === "votes" && sortByComments === false
-              ? "reviews reviews__sortButton--state-active"
-              : "reviews reviews__sortButton"
-          }
-          onClick={() => {
-            setSortByComments(false);
-            setSortBy("votes");
-          }}
-        >
-          votes
-        </button>
-        <button
-          className={
-            sortByComments === false
-              ? "reviews reviews__sortButton"
-              : "reviews reviews__sortButton--state-active"
-          }
-          onClick={() => {
-            setSortByComments(true);
-          }}
-        >
-          comments
-        </button>
-      </section>
+      <div className="reviews__buttons">
+        <div className="pageButtons">
+          <button
+            className={page === 1 ? "pageButton--state-inactive" : "pageButton"}
+            disabled={page === 1}
+            onClick={() => {
+              let newPage = page - 1;
+              setPage(newPage);
+            }}
+          >
+            PREVIOUS PAGE
+          </button>
+          <button
+            className={
+              page === pageLimit ? "pageButton--state-inactive" : "pageButton"
+            }
+            disabled={page === pageLimit}
+            onClick={() => {
+              let newPage = page + 1;
+              setPage(newPage);
+            }}
+          >
+            NEXT PAGE
+          </button>
+        </div>
+        <div className="sortButtons">
+          <button
+            className={
+              sortBy === "" && sortByComments === false
+                ? "sortButton--state-active"
+                : "sortButton"
+            }
+            onClick={() => {
+              setSortByComments(false);
+              setSortBy("");
+            }}
+          >
+            posted last
+          </button>
+          <button
+            className={
+              sortBy === "votes" && sortByComments === false
+                ? "sortButton--state-active"
+                : "sortButton"
+            }
+            onClick={() => {
+              setSortByComments(false);
+              setSortBy("votes");
+            }}
+          >
+            votes
+          </button>
+          <button
+            className={
+              sortByComments === false
+                ? "sortButton"
+                : "sortButton--state-active"
+            }
+            onClick={() => {
+              setSortByComments(true);
+            }}
+          >
+            comments
+          </button>
+        </div>
+      </div>
       <ul className="reviews reviews__list">
         {reviews.map((review) => {
           return <ReviewCard review={review} key={review.review_id} />;
