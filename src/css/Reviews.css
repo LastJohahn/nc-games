@@ -41,26 +41,88 @@
   margin: 3px;
 }
 
-.reviews {
+.reviews__list {
   background-color: gainsboro;
   list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  margin: 5px;
 }
 
-.reviews__list {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
+/* ReviewCard.js */
+
+.reviewsButton {
+  border: 2px outset ThreeDLightShadow;
+  background-color: gainsboro;
+  cursor: pointer;
 }
+
+.reviewCard {
+  background-color: whitesmoke;
+  border: black solid 2px;
+  margin-bottom: 10px;
+  display: grid;
+  /* grid-template-columns: 1fr 2fr 1fr; */
+  /* grid-template-areas:
+    "posted header img"
+    "body body body"
+    "data data delete"; */
+  grid-auto-rows: minmax(10px, auto);
+  gap: 5px;
+}
+
+.posted {
+  /* grid-area: posted; */
+}
+
+.ownerButton {
+  border: 2px outset ThreeDLightShadow;
+  background-color: gainsboro;
+  cursor: pointer;
+  margin: 3px;
+}
+
+.ownerButton:active {
+  border: 2px inset ThreeDLightShadow;
+  background-color: gainsboro;
+  cursor: pointer;
+  margin: 3px;
+}
+
+.reviews__title {
+  text-align: center;
+  margin: 0;
+  text-decoration: none;
+  color: black;
+  /* grid-area: header; */
+}
+
+.reviewsImage {
+  height: 50px;
+  margin: 4px;
+  border: 1px solid black;
+  border-radius: 25px;
+  grid-area: img;
+}
+
+.reviewBody {
+  /* grid-area: body; */
+}
+
+.reviewData {
+  /* grid-area: data; */
+}
+
+.delete {
+  /* grid-area: delete; */
+}
+
+/* end of ReviewCard.js */
 
 .reviewsByCategory__list {
   margin: 0;
   padding: 0;
   list-style-type: none;
-}
-
-.reviews__title {
-  background-color: grey;
-  border-bottom: black solid 2px;
 }
 
 .review {
