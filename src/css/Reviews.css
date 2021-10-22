@@ -7,6 +7,40 @@
   font-size: x-large;
 }
 
+.reviews__buttons {
+  display: flex;
+  border: black solid 2px;
+  background-color: whitesmoke;
+  padding: 3px;
+  margin: 5px;
+}
+
+.pageButton {
+  border: 2px outset ThreeDLightShadow;
+  background-color: gainsboro;
+  cursor: pointer;
+  margin: 3px;
+}
+
+.pageButton--state-inactive {
+  background-color: gainsboro;
+  border: 2px inset ThreeDLightShadow;
+  margin: 3px;
+}
+
+.sortButton {
+  border: 2px outset ThreeDLightShadow;
+  background-color: gainsboro;
+  cursor: pointer;
+  margin: 3px;
+}
+
+.sortButton--state-active {
+  border: 2px inset ThreeDLightShadow;
+  background-color: rgb(185, 182, 182);
+  margin: 3px;
+}
+
 .reviews {
   background-color: gainsboro;
   list-style-type: none;
@@ -27,27 +61,6 @@
 .reviews__title {
   background-color: grey;
   border-bottom: black solid 2px;
-}
-
-.reviews__sortButton {
-  border: 2px outset ThreeDLightShadow;
-  background-color: gainsboro;
-  cursor: pointer;
-}
-
-.reviews__sortButton--state-active {
-  border: 2px inset ThreeDLightShadow;
-  background-color: rgb(185, 182, 182);
-}
-
-.reviews__pageButton {
-  border: 2px outset ThreeDLightShadow;
-  background-color: gainsboro;
-  cursor: pointer;
-}
-
-.reviews__pageButton--state-inactive {
-  color: grey;
 }
 
 .review {
