@@ -9,7 +9,7 @@
 
 .button {
   border: 2px outset ThreeDLightShadow;
-  background-color: whitesmoke;
+  background-color: gainsboro;
   cursor: pointer;
 }
 
