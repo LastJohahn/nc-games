@@ -4,7 +4,7 @@ import "../css/DropdownMenu.css";
 const CategoryLink = ({ categorySlug }) => {
   return (
     <li key={categorySlug}>
-      <a href={`/categories/${categorySlug}`}>
+      <a href={`/categories/${categorySlug}`} className="dropdown__a">
         {categorySlug.replaceAll("-", " ").toUpperCase()}
       </a>
     </li>
