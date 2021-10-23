@@ -6,6 +6,7 @@ import CommentForm from "./CommentForm.js";
 import Votes from "./Votes.js";
 import WrongPath from "./WrongPath.js";
 import LoadingScreen from "./LoadingScreen";
+import "../css/ReviewById.css";
 
 const ReviewById = () => {
   const [review, setReview] = useState({});
@@ -79,16 +80,19 @@ const ReviewById = () => {
       <section className="single_review">
         {isReview ? (
           <>
-            <h2 className="header single_review__header">REVIEW</h2>
-            <h2 className="header single_review__title">{review.title}</h2>
-            <p>{`comments: ${review.comment_count}`}</p>
-            <Votes review={review} />
-            <p>{`posted by: ${review.owner}`}</p>
-            <img
-              src={`${review.review_img_url}`}
-              alt="what the reviewer has chosen to represent the game"
-            />
-            <p>{review.review_body}</p>
+            <h2 className="header">REVIEW</h2>
+            <div className="reviewCard">
+              <h2 className="reviews__title">{review.title}</h2>
+              <p>{`comments: ${review.comment_count}`}</p>
+              <Votes review={review} />
+              <p>{`posted by: ${review.owner}`}</p>
+              <img
+                className="reviewsImage"
+                src={`${review.review_img_url}`}
+                alt="what the reviewer has chosen to represent the game"
+              />
+              <p>{review.review_body}</p>
+            </div>
           </>
         ) : (
           <WrongPath />
