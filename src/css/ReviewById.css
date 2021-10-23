@@ -8,6 +8,18 @@
   gap: 3px;
 }
 
+.ownerButton {
+  border: 2px outset ThreeDLightShadow;
+  background-color: gainsboro;
+  cursor: pointer;
+  margin: 3px;
+  text-transform: capitalize;
+}
+
+.ownerButton:active {
+  border: 2px inset ThreeDLightShadow;
+}
+
 .reviews__title {
   text-align: center;
   margin: 7px;
@@ -22,4 +34,22 @@
   border-radius: 25px;
   grid-area: img;
   display: none;
+}
+
+.reviewBody {
+  text-align: left;
+  padding: 10px;
+  margin: 3px;
+  background-color: gainsboro;
+}
+
+.reviewData {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 3px;
+}
+
+.reviewData p {
+  margin: 0px;
 }
