@@ -89,21 +89,23 @@ const ReviewById = () => {
           <>
             <h2 className="header">REVIEW</h2>
             <div className="reviewCard">
-              <h2 className="reviews__title">{review.title}</h2>
               <button
                 className="ownerButton"
                 onClick={() => {
                   routeChangeUser(review.owner);
                 }}
               >{`${review.owner}`}</button>
-              <p>{`comments: ${review.comment_count}`}</p>
-              <Votes review={review} />
+              <h2 className="reviews__title">{review.title}</h2>
               <img
                 className="reviewsImage"
                 src={`${review.review_img_url}`}
                 alt="what the reviewer has chosen to represent the game"
               />
-              <p>{review.review_body}</p>
+              <p className="reviewBody">{review.review_body}</p>
+              <div className="reviewData">
+                <p>{`${review.comment_count} comments`}</p>
+                <Votes review={review} />
+              </div>
             </div>
           </>
         ) : (
