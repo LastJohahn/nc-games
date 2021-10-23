@@ -1,25 +1,36 @@
 import React, { useContext, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Votes from "./Votes.js";
 import { UserContext } from "../contexts/User";
 import { deleteReview } from "../utils/api.js";
+import "../css/ReviewCard.css";
 
 const ReviewCard = ({ review }) => {
+  const history = useHistory();
   const { user } = useContext(UserContext);
   const [isDeleted, setIsDeleted] = useState(false);
   const [isDeleteError, setIsDeleteError] = useState(false);
 
+  const routeChangeUser = (username) => {
+    let path = `/users/${username}`;
+    history.push(path);
+  };
+
   return isDeleted ? (
     <br />
   ) : (
-    <li key={review.review_id} className="reviews">
-      <Link to={`/reviews/${review.review_id}`}>
-        <h2 className="reviews reviews__title">{review.title}</h2>
-      </Link>
-      <div>
-        {review.owner === user.username ? (
+    <li key={review.review_id} className="reviewCard">
+      <div className="postedBy">
+        <button
+          className="ownerButton"
+          onClick={() => {
+            routeChangeUser(review.owner);
+          }}
+        >{`${review.owner}`}</button>
+        {review.owner === user.username && (
           <button
-            className="reviews reviews__reviewsDeleteButton"
+            className="deleteButton"
             onClick={() => {
               deleteReview(review.review_id).then((response) => {
                 if (response.status === 204) {
@@ -32,30 +43,28 @@ const ReviewCard = ({ review }) => {
           >
             DELETE REVIEW
           </button>
-        ) : (
-          <span></span>
         )}
-        {isDeleteError ? (
+        {isDeleteError === true && (
           <p>Oops, something went wrong with deleting this review!</p>
-        ) : (
-          <span></span>
         )}
       </div>
-      {review.comment_count ? (
-        <p>{`comments: ${review.comment_count}`}</p>
-      ) : (
-        <p>{`comments: 0`}</p>
-      )}
-      <Votes review={review} />
-      <p>posted by: </p>
-      <Link to={`/users/${review.owner}`}>
-        <p>{`${review.owner}`}</p>
+      <Link className="reviews__title" to={`/reviews/${review.review_id}`}>
+        <h2>{review.title}</h2>
       </Link>
       <img
         src={review.review_img_url}
         alt="what the reviewer has chosen to represent the game"
-      ></img>
-      <p>{review.review_body}</p>
+        className="reviewsImage"
+      />
+      <p className="reviewBody">{review.review_body}</p>
+      <div className="reviewData">
+        {review.comment_count ? (
+          <p>{`${review.comment_count} comments`}</p>
+        ) : (
+          <p>{`0 comments`}</p>
+        )}
+        <Votes review={review} />
+      </div>
     </li>
   );
 };
