@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { getCommentsById, getReviewById } from "../utils/api";
 import { UserContext } from "../contexts/User";
 import CommentForm from "./CommentForm.js";
@@ -9,6 +9,8 @@ import LoadingScreen from "./LoadingScreen";
 import "../css/ReviewById.css";
 
 const ReviewById = () => {
+  const history = useHistory();
+
   const [review, setReview] = useState({});
   const [isReview, setIsReview] = useState();
   const [isLoadingReview, setIsLoadingReview] = useState(true);
@@ -23,6 +25,11 @@ const ReviewById = () => {
   const { user } = useContext(UserContext);
 
   const { review_id } = useParams();
+
+  const routeChangeUser = (username) => {
+    let path = `/users/${username}`;
+    history.push(path);
+  };
 
   useEffect(() => {
     getReviewById(review_id).then((result) => {
@@ -83,9 +90,14 @@ const ReviewById = () => {
             <h2 className="header">REVIEW</h2>
             <div className="reviewCard">
               <h2 className="reviews__title">{review.title}</h2>
+              <button
+                className="ownerButton"
+                onClick={() => {
+                  routeChangeUser(review.owner);
+                }}
+              >{`${review.owner}`}</button>
               <p>{`comments: ${review.comment_count}`}</p>
               <Votes review={review} />
-              <p>{`posted by: ${review.owner}`}</p>
               <img
                 className="reviewsImage"
                 src={`${review.review_img_url}`}
