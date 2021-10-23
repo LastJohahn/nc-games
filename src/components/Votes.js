@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { voteAdder } from "../utils/api";
-import "../css/Reviews.css";
+import "../css/Votes.css";
 
 const Votes = ({ review }) => {
   const [reviewVotes, setReviewVotes] = useState(0);
@@ -21,9 +21,9 @@ const Votes = ({ review }) => {
 
   return (
     <div className="votes">
-      <p>{`votes: ${review.votes + reviewVotes}`}</p>
+      <p>{`${review.votes + reviewVotes} votes`}</p>
       <button
-        className="reviewsButton"
+        className="votesButton"
         disabled={isDisabled}
         onClick={() => {
           vote();
