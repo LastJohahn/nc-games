@@ -1,0 +1,84 @@
+.reviewCard {
+  background-color: whitesmoke;
+  border: black solid 2px;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 20px, 40px;
+  grid-auto-rows: minmax(10px, auto);
+  gap: 3px;
+}
+
+.postedBy {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 2px;
+}
+
+.ownerButton {
+  border: 2px outset ThreeDLightShadow;
+  background-color: gainsboro;
+  cursor: pointer;
+  margin: 3px;
+  text-transform: capitalize;
+}
+
+.ownerButton:active {
+  border: 2px inset ThreeDLightShadow;
+}
+
+.deleteButton {
+  border: 2px outset ThreeDLightShadow;
+  background-color: gainsboro;
+  cursor: pointer;
+  margin: 3px;
+}
+
+.deleteButton:active {
+  border: 2px inset ThreeDLightShadow;
+}
+
+.ownerButton:active {
+  border: 2px inset ThreeDLightShadow;
+  background-color: gainsboro;
+  cursor: pointer;
+  margin: 3px;
+}
+
+.reviews__title {
+  text-align: center;
+  margin: 3px;
+  text-decoration: none;
+  color: black;
+}
+
+.reviews__title h2 {
+  margin: 0;
+}
+
+.reviewsImage {
+  height: 50px;
+  margin: 4px;
+  border: 1px solid black;
+  border-radius: 25px;
+  grid-area: img;
+  display: none;
+}
+
+.reviewBody {
+  text-align: left;
+  padding: 10px;
+  margin: 3px;
+  background-color: gainsboro;
+}
+
+.reviewData {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 3px;
+}
+
+.reviewData p {
+  margin: 0px;
+}
