@@ -89,12 +89,14 @@ const ReviewById = () => {
           <>
             <h2 className="header">REVIEW</h2>
             <div className="reviewCard">
-              <button
-                className="ownerButton"
-                onClick={() => {
-                  routeChangeUser(review.owner);
-                }}
-              >{`${review.owner}`}</button>
+              <div className="ownerButtonContainer">
+                <button
+                  className="ownerButtonIndivReview"
+                  onClick={() => {
+                    routeChangeUser(review.owner);
+                  }}
+                >{`${review.owner}`}</button>
+              </div>
               <h2 className="reviews__title">{review.title}</h2>
               <img
                 className="reviewsImage"
