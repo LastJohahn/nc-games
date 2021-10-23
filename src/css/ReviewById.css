@@ -8,7 +8,13 @@
   gap: 3px;
 }
 
-.ownerButton {
+.ownerButtonContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.ownerButtonIndivReview {
   border: 2px outset ThreeDLightShadow;
   background-color: gainsboro;
   cursor: pointer;
@@ -16,7 +22,7 @@
   text-transform: capitalize;
 }
 
-.ownerButton:active {
+.ownerButtonIndivReview:active {
   border: 2px inset ThreeDLightShadow;
 }
 
