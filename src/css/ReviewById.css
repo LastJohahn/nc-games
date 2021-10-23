@@ -1,0 +1,25 @@
+.reviewCard {
+  background-color: whitesmoke;
+  border: black solid 2px;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 20px, 40px;
+  grid-auto-rows: minmax(10px, auto);
+  gap: 3px;
+}
+
+.reviews__title {
+  text-align: center;
+  margin: 7px;
+  text-decoration: none;
+  color: black;
+}
+
+.reviewsImage {
+  height: 50px;
+  margin: 4px;
+  border: 1px solid black;
+  border-radius: 25px;
+  grid-area: img;
+  display: none;
+}
