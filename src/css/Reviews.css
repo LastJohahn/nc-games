@@ -1,10 +1,10 @@
 .reviews__header {
-  background-color: whitesmoke;
   text-align: center;
-  font-size: 0.8em;
-  border: black solid 2px;
-  margin: 5px;
-  font-size: x-large;
+  display: block;
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-block-start: 0.75em;
+  margin-block-end: 0.75em;
 }
 
 .reviews__buttons {
