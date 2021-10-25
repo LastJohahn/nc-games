@@ -135,8 +135,8 @@ const ReviewById = () => {
                 <button
                   className={
                     sortCommentsByVotes
-                      ? "comments comments__sortButton"
-                      : "comments comments__sortButton--state-active"
+                      ? "sortButton"
+                      : "sortButton--state-active"
                   }
                   onClick={() => {
                     setSortCommentsByVotes(false);
@@ -148,8 +148,8 @@ const ReviewById = () => {
                 <button
                   className={
                     sortCommentsByVotes
-                      ? "comments comments__sortButton--state-active"
-                      : "comments comments_sortButton"
+                      ? "sortButton--state-active"
+                      : "sortButton"
                   }
                   onClick={() => {
                     setSortCommentsByVotes(true);
