@@ -1,6 +1,7 @@
 .reviewCard {
   background-color: whitesmoke;
   border: black solid 2px;
+  margin: 5px;
   margin-bottom: 10px;
   display: grid;
   grid-template-columns: 20px, 40px;
@@ -57,5 +58,46 @@
 }
 
 .reviewData p {
+  margin: 0px;
+}
+
+/* comments style */
+
+.commentCard {
+  background-color: whitesmoke;
+  border: black solid 2px;
+  margin: 5px;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 20px, 40px;
+  grid-auto-rows: minmax(10px, auto);
+  gap: 3px;
+}
+
+.commentsSortButtons {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border: black solid 2px;
+  background-color: whitesmoke;
+  padding: 3px;
+  margin: 5px;
+}
+
+.commentBody {
+  text-align: left;
+  padding: 10px;
+  margin: 3px;
+  background-color: gainsboro;
+}
+
+.commentData {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 3px;
+}
+
+.commentData p {
   margin: 0px;
 }
