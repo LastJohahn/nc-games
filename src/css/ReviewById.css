@@ -84,6 +84,19 @@
   margin: 5px;
 }
 
+.sortButton {
+  border: 2px outset ThreeDLightShadow;
+  background-color: gainsboro;
+  cursor: pointer;
+  margin: 3px;
+}
+
+.sortButton--state-active {
+  border: 2px inset ThreeDLightShadow;
+  background-color: rgb(185, 182, 182);
+  margin: 3px;
+}
+
 .commentBody {
   text-align: left;
   padding: 10px;
