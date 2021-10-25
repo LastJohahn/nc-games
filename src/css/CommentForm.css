@@ -15,7 +15,7 @@
   background-color: gainsboro;
   cursor: pointer;
   margin: 3px;
-  padding: 0;
+  padding: 1px;
 }
 
 .form__submit:active {
