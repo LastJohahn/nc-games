@@ -63,6 +63,15 @@
 
 /* comments style */
 
+.comments {
+  background-color: gainsboro;
+}
+.comments__list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
 .commentCard {
   background-color: whitesmoke;
   border: black solid 2px;
@@ -95,6 +104,11 @@
   border: 2px inset ThreeDLightShadow;
   background-color: rgb(185, 182, 182);
   margin: 3px;
+}
+
+.comments__list__poster {
+  background-color: grey;
+  border-bottom: black solid 2px;
 }
 
 .commentBody {
