@@ -63,3 +63,18 @@
   background-color: grey;
   border-bottom: black solid 2px;
 }
+
+@media only screen and (min-width: 1080px) {
+  .reviews__header {
+    float: left;
+    width: 50%;
+    margin: 5px;
+  }
+
+  .reviews__buttons {
+    justify-content: space-around;
+  }
+  .reviews__list {
+    clear: left;
+  }
+}
