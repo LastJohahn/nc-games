@@ -82,3 +82,20 @@
 .reviewData p {
   margin: 0px;
 }
+
+@media only screen and (min-width: 1080px) {
+  .reviewCard {
+    width: 30%;
+  }
+  .postedBy {
+    max-height: 30px;
+  }
+
+  .reviews__title {
+    max-height: 50px;
+  }
+  .reviewBody {
+    max-height: 150px;
+    overflow-y: auto;
+  }
+}
