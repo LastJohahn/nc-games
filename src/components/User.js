@@ -22,7 +22,7 @@ const User = ({ reviews, setReviews }) => {
     <LoadingScreen />
   ) : (
     <div>
-      <h2>{username.toUpperCase()}</h2>
+      <h2 className="header user__header">{username.toUpperCase()}</h2>
       <section className="reviews">
         <ul className="reviews reviews__list">
           {reviews.map((review) => {

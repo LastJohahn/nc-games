@@ -1,13 +1,16 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { getCommentsById, getReviewById } from "../utils/api";
 import { UserContext } from "../contexts/User";
 import CommentForm from "./CommentForm.js";
 import Votes from "./Votes.js";
 import WrongPath from "./WrongPath.js";
 import LoadingScreen from "./LoadingScreen";
+import "../css/ReviewById.css";
 
 const ReviewById = () => {
+  const history = useHistory();
+
   const [review, setReview] = useState({});
   const [isReview, setIsReview] = useState();
   const [isLoadingReview, setIsLoadingReview] = useState(true);
@@ -22,6 +25,11 @@ const ReviewById = () => {
   const { user } = useContext(UserContext);
 
   const { review_id } = useParams();
+
+  const routeChangeUser = (username) => {
+    let path = `/users/${username}`;
+    history.push(path);
+  };
 
   useEffect(() => {
     getReviewById(review_id).then((result) => {
@@ -76,79 +84,95 @@ const ReviewById = () => {
     <LoadingScreen />
   ) : (
     <div className="reviewAndComments">
-      <section className="review">
+      <div className="reviewSolo">
         {isReview ? (
-          <>
-            <h1>REVIEW</h1>
-            <h2 className="review review__title">{review.title}</h2>
-            <p>{`comments: ${review.comment_count}`}</p>
-            <Votes review={review} />
-            <p>{`posted by: ${review.owner}`}</p>
-            <img
-              src={`${review.review_img_url}`}
-              alt="what the reviewer has chosen to represent the game"
-            />
-            <p>{review.review_body}</p>
-          </>
+          <div>
+            <h2 className="header">REVIEW</h2>
+            <div className="reviewCardSolo">
+              <div className="ownerButtonContainer">
+                <button
+                  className="ownerButtonIndivReview"
+                  onClick={() => {
+                    routeChangeUser(review.owner);
+                  }}
+                >{`${review.owner}`}</button>
+              </div>
+              <h2 className="reviews__title">{review.title}</h2>
+              <img
+                className="reviewsImage"
+                src={`${review.review_img_url}`}
+                alt="what the reviewer has chosen to represent the game"
+              />
+              <p className="reviewBody">{review.review_body}</p>
+              <div className="reviewData">
+                <p>{`${review.comment_count} comments`}</p>
+                <Votes review={review} />
+              </div>
+            </div>
+          </div>
         ) : (
           <WrongPath />
         )}
-      </section>
-      <section>
-        {isUser ? (
-          <CommentForm
-            review_id={review_id}
-            setCommentsOnReview={setCommentsOnReview}
-          />
-        ) : (
-          <p>Please log in to leave a comment!</p>
-        )}
-      </section>
+      </div>
+      {isUser ? (
+        <CommentForm
+          review_id={review_id}
+          setCommentsOnReview={setCommentsOnReview}
+        />
+      ) : (
+        <p>Please log in to leave a comment!</p>
+      )}
       {isLoadingComments ? (
         <LoadingScreen className="comments" />
       ) : (
         <section>
           {hasComments ? (
             <section className="comments">
-              <h1>COMMENTS</h1>
-              <button
-                className={
-                  sortCommentsByVotes
-                    ? "comments comments__sortButton"
-                    : "comments comments__sortButton--state-active"
-                }
-                onClick={() => {
-                  setSortCommentsByVotes(false);
-                  setIsLoadingComments(true);
-                }}
-              >
-                posted on
-              </button>
-              <button
-                className={
-                  sortCommentsByVotes
-                    ? "comments comments__sortButton--state-active"
-                    : "comments comments_sortButton"
-                }
-                onClick={() => {
-                  setSortCommentsByVotes(true);
-                  setIsLoadingComments(true);
-                }}
-              >
-                votes
-              </button>
-              <ul className="comments comments__list">
-                {commentsOnReview.map((comment) => {
-                  return (
-                    <li key={comment.comment_id}>
-                      <h3 className="comments comments__list comments__list__poster">{`posted by: ${comment.author}`}</h3>
-                      <p>{comment.body}</p>
-                      <p>posted on: {dateMaker(comment.created_at)}</p>
-                      <p>votes: {comment.votes}</p>
-                    </li>
-                  );
-                })}
-              </ul>
+              <h2 className="header">COMMENTS</h2>
+              <div className="commentsCard">
+                <div className="commentsSortButtons">
+                  <button
+                    className={
+                      sortCommentsByVotes
+                        ? "sortButton"
+                        : "sortButton--state-active"
+                    }
+                    onClick={() => {
+                      setSortCommentsByVotes(false);
+                      setIsLoadingComments(true);
+                    }}
+                  >
+                    posted on
+                  </button>
+                  <button
+                    className={
+                      sortCommentsByVotes
+                        ? "sortButton--state-active"
+                        : "sortButton"
+                    }
+                    onClick={() => {
+                      setSortCommentsByVotes(true);
+                      setIsLoadingComments(true);
+                    }}
+                  >
+                    votes
+                  </button>
+                </div>
+                <ul className="comments comments__list">
+                  {commentsOnReview.map((comment) => {
+                    return (
+                      <li key={comment.comment_id} className="commentCard">
+                        <h3 className="comments comments__list comments__list__poster">{`posted by ${comment.author}`}</h3>
+                        <p className="commentBody">{comment.body}</p>
+                        <div className="commentData">
+                          <p>posted on {dateMaker(comment.created_at)}</p>
+                          <p>{comment.votes} votes</p>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
             </section>
           ) : (
             <h2>Looks like this review has no comments! Why not leave one?</h2>

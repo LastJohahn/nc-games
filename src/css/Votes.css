@@ -1,0 +1,20 @@
+.votes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.votes p {
+  margin: 3px;
+}
+
+.votesButton {
+  border: 2px outset ThreeDLightShadow;
+  background-color: gainsboro;
+  cursor: pointer;
+  margin: 3px;
+}
+
+.votesButton:active {
+  border: 2px inset ThreeDLightShadow;
+}

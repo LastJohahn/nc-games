@@ -1,0 +1,38 @@
+.form {
+  background-color: whitesmoke;
+  border: black solid 2px;
+  padding: 6px;
+  margin: 5px;
+}
+
+.form__label {
+  padding: 5px;
+  font-weight: bold;
+}
+
+.form__submit {
+  border: 2px outset ThreeDLightShadow;
+  background-color: gainsboro;
+  cursor: pointer;
+  margin: 3px;
+  padding: 1px;
+}
+
+.form__submit:active {
+  border: 2px inset ThreeDLightShadow;
+}
+
+.form__textarea {
+  border: 1px solid grey;
+  width: 75%;
+  min-height: 75px;
+}
+
+@media only screen and (min-width: 1080px) {
+  .commentForm {
+    padding: 5px;
+  }
+  .form {
+    padding: 2px;
+  }
+}

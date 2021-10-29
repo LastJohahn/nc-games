@@ -1,0 +1,45 @@
+.reviewForm__form {
+  background-color: whitesmoke;
+  border: black solid 2px;
+  padding: 5px;
+  margin: 5px;
+}
+
+label {
+  margin: 5px;
+  font-weight: bold;
+}
+
+input {
+  margin: 3px;
+}
+
+.formSelect {
+  border-radius: 0;
+  margin: 3px;
+}
+
+.form__submit {
+  border: 2px outset ThreeDLightShadow;
+  background-color: gainsboro;
+  cursor: pointer;
+  margin: 3px;
+  padding: 1px;
+}
+
+.form__submit:active {
+  border: 2px inset ThreeDLightShadow;
+}
+
+.form__textarea {
+  border: 1px solid grey;
+  width: 75%;
+  min-height: 75px;
+}
+
+@media only screen and (min-width: 1080px) {
+  .reviewForm__form {
+    width: 50%;
+    margin: auto;
+  }
+}

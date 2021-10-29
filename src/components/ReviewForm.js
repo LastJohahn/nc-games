@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { UserContext } from "../contexts/User";
 import { postReview } from "../utils/api";
 import ReviewCard from "./ReviewCard.js";
+import "../css/ReviewForm.css";
 
 const ReviewForm = ({ categories }) => {
   const { user } = useContext(UserContext);
@@ -15,6 +16,7 @@ const ReviewForm = ({ categories }) => {
 
   return (
     <div className="reviewForm">
+      <h2 className="header reviewForm__header">SUBMIT A REVIEW</h2>
       <form
         className="reviewForm__form"
         onSubmit={(e) => {
@@ -61,6 +63,7 @@ const ReviewForm = ({ categories }) => {
         <label htmlFor="reviewCategory">CATEGORY</label>
         <br />
         <select
+          className="formSelect"
           id="reviewCategory"
           name="reviewCategory"
           onChange={(e) => {
@@ -79,6 +82,7 @@ const ReviewForm = ({ categories }) => {
         <label htmlFor="reviewBody">REVIEW BODY</label>
         <br />
         <textarea
+          className="form__textarea"
           id="reviewBody"
           name="reviewBody"
           onChange={(e) => {
@@ -86,7 +90,11 @@ const ReviewForm = ({ categories }) => {
           }}
         />
         <br />
-        <input type="submit" value="POST REVIEW"></input>
+        <input
+          className="form__submit"
+          type="submit"
+          value="POST REVIEW"
+        ></input>
         {isReviewError && (
           <p>Oops, something went wrong with posting your review!</p>
         )}

@@ -1,8 +1,9 @@
 import React from "react";
+import "../css/Nav.css";
 
 const Header = () => {
   return (
-    <header className="main_header">
+    <header className="header--main">
       <h1> NC GAMES REVIEWS</h1>
     </header>
   );
