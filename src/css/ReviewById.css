@@ -1,4 +1,4 @@
-.reviewCard {
+.reviewCardSolo {
   background-color: whitesmoke;
   border: black solid 2px;
   margin: 5px;
@@ -127,4 +127,25 @@
 
 .commentData p {
   margin: 0px;
+}
+
+@media only screen and (min-width: 1080px) {
+  .reviewAndComments {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 50% 50%;
+    grid-auto-flow: row;
+    gap: 2px;
+  }
+  .reviewSolo {
+    grid-column-start: 1;
+    grid-column-end: 2;
+  }
+  .commentForm {
+    grid-row-start: 2;
+    grid-column-start: 2;
+  }
+  .commentsCard {
+    margin: 5px;
+  }
 }
