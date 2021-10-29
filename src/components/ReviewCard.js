@@ -51,11 +51,6 @@ const ReviewCard = ({ review }) => {
       <Link className="reviews__title" to={`/reviews/${review.review_id}`}>
         <h2>{review.title}</h2>
       </Link>
-      <img
-        src={review.review_img_url}
-        alt="what the reviewer has chosen to represent the game"
-        className="reviewsImage"
-      />
       <p className="reviewBody">{review.review_body}</p>
       <div className="reviewData">
         {review.comment_count ? (

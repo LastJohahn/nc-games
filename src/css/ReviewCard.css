@@ -56,15 +56,6 @@
   margin: 0;
 }
 
-.reviewsImage {
-  height: 50px;
-  margin: 4px;
-  border: 1px solid black;
-  border-radius: 25px;
-  grid-area: img;
-  display: none;
-}
-
 .reviewBody {
   text-align: left;
   padding: 10px;
