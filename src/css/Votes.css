@@ -10,7 +10,7 @@
 
 .votesButton {
   border: 2px outset ThreeDLightShadow;
-  background-color: gainsboro;
+  background-color: rgb(192, 192, 192);
   cursor: pointer;
   margin: 3px;
 }

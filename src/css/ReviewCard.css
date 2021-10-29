@@ -60,7 +60,7 @@
   text-align: left;
   padding: 10px;
   margin: 3px;
-  background-color: gainsboro;
+  background-color: #c3dad2;
 }
 
 .reviewData {
@@ -68,6 +68,8 @@
   align-items: center;
   justify-content: space-around;
   margin: 3px;
+  background-color: grey;
+  border: black solid 2px;
 }
 
 .reviewData p {

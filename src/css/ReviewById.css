@@ -64,7 +64,7 @@
 /* comments style */
 
 .comments {
-  background-color: gainsboro;
+  background-color: #87ab9f;
 }
 .comments__list {
   list-style-type: none;
@@ -115,7 +115,7 @@
   text-align: left;
   padding: 10px;
   margin: 3px;
-  background-color: gainsboro;
+  background-color: #c3dad2;
 }
 
 .commentData {

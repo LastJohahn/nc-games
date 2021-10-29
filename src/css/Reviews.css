@@ -42,7 +42,7 @@
 }
 
 .reviews__list {
-  background-color: gainsboro;
+  background-color: #87ab9f;
   list-style-type: none;
   display: flex;
   flex-direction: column;
@@ -53,10 +53,6 @@
   margin: 0;
   padding: 0;
   list-style-type: none;
-}
-
-.review {
-  background-color: gainsboro;
 }
 
 .review__title {

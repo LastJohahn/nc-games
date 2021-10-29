@@ -12,11 +12,15 @@ label {
 
 input {
   margin: 3px;
+  background-color: #c3dad2;
+  border: 1px solid grey;
 }
 
 .formSelect {
   border-radius: 0;
   margin: 3px;
+  background-color: #c3dad2;
+  border: 1px solid grey;
 }
 
 .form__submit {
@@ -35,6 +39,7 @@ input {
   border: 1px solid grey;
   width: 75%;
   min-height: 75px;
+  background-color: #c3dad2;
 }
 
 @media only screen and (min-width: 1080px) {
